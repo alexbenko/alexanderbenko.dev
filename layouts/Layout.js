@@ -8,7 +8,6 @@ export default function MyLayout({ children }) {
   return (
     <>
       <div className="nav-bar" style={{display:'flex',flexDirection:'row',justifyContent:'space-evenly'}}>
-        <NavItem endpoint={'/'}/>
         {links.map((link,i) =>{
           return(
             <NavItem endpoint={link} key={i} />
