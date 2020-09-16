@@ -8,6 +8,7 @@ const Image = ({file,styling={}}) =>{
         <source srcSet={require(`../images/${file}`)} style={styling} type="image/jpeg" />
         <img src={require(`../images/${file}`)} style={styling} alt={`${file.split('.')[0]}`}/>
       </picture>
+      <p style={{textTransform: 'capitalize'}}>{`${file.split('.')[0].split('/')[1]}`}</p>
     </div>
   );
 
