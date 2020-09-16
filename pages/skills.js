@@ -39,6 +39,7 @@ class Skills extends Component{
       </div>
     )
 
+
   }
 
 }

@@ -17,6 +17,7 @@ export default async function handler(req,res){
       if(err){
         console.error(err)
         res.status(404).json('Error Reading Image Dir')
+        resolve()
       }
       //removes .DS_Store from the array if it exists
       if(images.includes('.DS_Store')){
@@ -28,6 +29,4 @@ export default async function handler(req,res){
       resolve();
     })
   })
-
-
 }
