@@ -3,8 +3,8 @@ import MyLayout from "../layouts/Layout";
 
 const Index = ()=>{
   return(
-    <div>
-      Das My Website
+    <div >
+      Das My Websit
 
     </div>
 
