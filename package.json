@@ -4,9 +4,10 @@
   "description": "Portfolio site for Alexander Benko",
   "main": "server.js",
   "scripts": {
-    "dev": "node server/server.js",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "node server/server.js",
+    "docker-build": "docker build . -t abenk"
   },
   "repository": {
     "type": "git",
@@ -36,7 +37,7 @@
     "next": "^9.5.3",
     "next-compose-plugins": "^2.2.0",
     "next-optimized-images": "^2.6.2",
-    "npm": "^6.14.8",
+    "next-seo": "^4.7.3",
     "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
