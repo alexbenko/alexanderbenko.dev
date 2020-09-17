@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import MyLayout from "../layouts/Layout";
 import Image from '../components/Image.jsx';
 import axios from 'axios';
+import Head from 'next/head'
 
 class Skills extends Component{
   constructor(props){
@@ -30,6 +31,12 @@ class Skills extends Component{
 
     return(
       <div className="skills" >
+        <Head>
+          <title>Alexander Benko</title>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <link rel="shortcut icon" href="/skills.ico" />
+        </Head>
+
         <div className="skill-imgages"  style={{paddingLeft:"10%",display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: '10%', gridAutoRows: 'minMax(10%, auto)'}}>
           {this.state.images.map((image,i)=>{
             return(
