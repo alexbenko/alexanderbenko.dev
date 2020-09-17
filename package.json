@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "node server/server.js",
+    "start": "next start",
     "docker-build": "docker build . -t abenk"
   },
   "repository": {
@@ -41,6 +41,7 @@
     "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-icons": "^3.11.0",
     "responsive-loader": "^2.1.1",
     "svg-sprite-loader": "^5.0.0",
     "webp-loader": "^0.6.0",
