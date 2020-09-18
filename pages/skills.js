@@ -1,36 +1,32 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import MyLayout from "../layouts/Layout";
 import Image from '../components/Image.jsx';
 import axios from 'axios';
-import Head from 'next/head'
+import Head from 'next/head';
+import {useSpring, animated} from 'react-spring'
 
-class Skills extends Component{
-  constructor(props){
-    super(props)
-    this.state = {
-      images: []
-    }
+const Skills = ()=>{
+  const [images, setImages] = useState([]);
 
-  }
-
-  componentDidMount(){
+  useEffect(() => {
     axios.get('/api/skills')
     .then((res)=>{
-      this.setState({images:res.data})
+      setImages(res.data)
     })
     .catch(err => console.error(err))
-  }
+  },[]);
 
-  render(){
-    const imgStyle = {
-      verticalAlign: 'middle',
-      width: '50%',
-      height: 'auto',
 
-    }
 
+  const imgStyle = {
+    verticalAlign: 'middle',
+    width: '50%',
+    height: 'auto',
+  };
+
+  const props = useSpring({opacity: 1, from: {opacity: 0}})
     return(
-      <div className="skills" >
+      <animated.div className="skills" style={props}>
         <Head>
           <title>Alexander Benko</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -38,17 +34,13 @@ class Skills extends Component{
         </Head>
 
         <div className="skill-imgages"  style={{paddingLeft:"10%",display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: '10%', gridAutoRows: 'minMax(10%, auto)'}}>
-          {this.state.images.map((image,i)=>{
+          {images.map((image,i)=>{
             return(
               <Image file={'skills/' + image} styling={imgStyle} key={i}/>
             )})}
         </div>
-      </div>
+      </animated.div >
     )
-
-
-  }
-
 }
 
 Skills.Layout = MyLayout;
