@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import { IconContext } from "react-icons";
+import { FaRegLifeRing } from "react-icons/fa";
 
 const NavItem = ({endpoint,router})=>{
   let style = {};
@@ -34,7 +36,10 @@ const NavItem = ({endpoint,router})=>{
   };
   return(
     <div className={router.pathname == endpoint ? "active-link" : "not-link"}>
-      <Link href={endpoint}><button style={router.pathname == endpoint ? style.activeButton : style.nonActiveButton}><p style={{textTransform: 'capitalize'}}>{endpoint.substring(1)}</p></button></Link>
+      <Link href={endpoint}><button style={router.pathname == endpoint ? style.activeButton : style.nonActiveButton}><p style={{textTransform: 'capitalize',padding:'0 10px 0 10px'}}>{endpoint.substring(1)}</p>
+      <IconContext.Provider value={{size:'2.5em'}}>
+              <FaRegLifeRing />
+        </IconContext.Provider></button></Link>
     </div>
   )
 
