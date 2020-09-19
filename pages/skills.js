@@ -21,26 +21,30 @@ const Skills = ()=>{
   const imgStyle = {
     verticalAlign: 'middle',
     width: '50%',
-    height: 'auto',
+    height: 'auto'
   };
 
   const props = useSpring({opacity: 1, from: {opacity: 0}})
     return(
-      <animated.div className="skills" style={props}>
+      <div className="skills" style={{paddingBottom:'45%'}}>
         <Head>
           <title>Alexander Benko</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <link rel="shortcut icon" href="/skills.ico" />
+          <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"/>
         </Head>
 
-        <div className="skill-imgages"  style={{paddingLeft:"10%",display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: '10%', gridAutoRows: 'minMax(10%, auto)'}}>
-          {images.map((image,i)=>{
-            return(
-              <Image file={'skills/' + image} styling={imgStyle} key={i}/>
-            )})}
-        </div>
-      </animated.div >
+          <div className="skill-imgages"  style={{paddingLeft:"10%",display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: '10%', gridAutoRows: 'minMax(10%, auto)'}}>
+            {images.map((image,i)=>{
+              return(
+                <animated.div style={props}>
+                  <Image file={'skills/' + image} styling={imgStyle} key={i}/>
+                </animated.div>
+              )})}
+          </div>
+      </div >
     )
+
 }
 
 Skills.Layout = MyLayout;

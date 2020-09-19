@@ -4,10 +4,9 @@ import { IconContext } from "react-icons";
 import { FaRegLifeRing } from "react-icons/fa";
 
 const NavItem = ({endpoint,router})=>{
-  let style = {};
-  style.nonActiveButton = {
+  let button = {
     width:'100%',
-    backgroundColor: '#808080',
+    backgroundColor: router.pathname == endpoint ? '#32CD32' :'#808080',
     border: 'none',
     color: 'white',
     padding: '20px',
@@ -20,26 +19,16 @@ const NavItem = ({endpoint,router})=>{
     borderRadius:'15%',
     margin: '10px 0'
   };
-  style.activeButton = {
-    width:'100%',
-    backgroundColor: 'green',
-    border: 'none',
-    color: 'white',
-    padding: '20px',
-    textAlign: 'center',
-    textDecoration: 'none',
-    display: 'block',
-    fontSize: '16px',
-    margin: '4px 2px',
-    cursor: 'pointer',
-    borderRadius:'15%'
-  };
+
   return(
-    <div className={router.pathname == endpoint ? "active-link" : "not-link"}>
-      <Link href={endpoint}><button style={router.pathname == endpoint ? style.activeButton : style.nonActiveButton}><p style={{textTransform: 'capitalize',padding:'0 10px 0 10px'}}>{endpoint.substring(1)}</p>
-      <IconContext.Provider value={{size:'2.5em'}}>
-              <FaRegLifeRing />
-        </IconContext.Provider></button></Link>
+    <div className={router.pathname == endpoint ? "active-link" : "not-active-link"}>
+      <Link href={endpoint}>
+        <button style={button}>
+          <IconContext.Provider value={{size:'2.5em'}}>
+            <FaRegLifeRing />
+          </IconContext.Provider>
+        </button>
+      </Link>
     </div>
   )
 
