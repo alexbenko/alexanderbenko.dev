@@ -44,17 +44,15 @@ export default function MyLayout({ children }) {
   return (
     <>
       <div className="nav-bar" style={navbarHolder}>
-
         <div className={router.pathname == "/" ? "active-link" : "not-link"}>
           <Link href={'/'}>
             <button style={button}>
-                <IconContext.Provider value={{size:'2.5em'}}>
-                  <FaHome />
-                </IconContext.Provider>
-              </button>
-            </Link>
+              <IconContext.Provider value={{size:'2.5em'}}>
+                <FaHome />
+              </IconContext.Provider>
+            </button>
+          </Link>
         </div>
-
         {links.map((link,i) =>{
           return(
             <NavItem router={router} endpoint={link} key={i} />
