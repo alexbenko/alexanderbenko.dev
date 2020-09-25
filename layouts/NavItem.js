@@ -1,7 +1,15 @@
 import React from "react";
 import Link from "next/link";
 import { IconContext } from "react-icons";
-import { FaRegLifeRing } from "react-icons/fa";
+import { FaBrain , FaGrav} from "react-icons/fa";
+
+const getIcon = (endpoint) =>{
+  if(endpoint === '/adventures'){
+    return <FaGrav />
+  } else {
+    return <FaBrain />
+  }
+}
 
 const NavItem = ({endpoint,router})=>{
   let button = {
@@ -19,13 +27,12 @@ const NavItem = ({endpoint,router})=>{
     borderRadius:'15%',
     margin: '10px 0'
   };
-
   return(
     <div className={router.pathname == endpoint ? "active-link" : "not-active-link"}>
       <Link href={endpoint}>
         <button style={button}>
           <IconContext.Provider value={{size:'2.5em'}}>
-            <FaRegLifeRing />
+            {getIcon(endpoint)}
           </IconContext.Provider>
         </button>
       </Link>
