@@ -2,7 +2,7 @@ import React from 'react'
 import MyLayout from "../layouts/Layout";
 import Head from 'next/head';
 import { IconContext } from "react-icons";
-import { FaGithub } from "react-icons/fa";
+import { FaDownload } from "react-icons/fa";
 import {useSpring,animated,useTrail} from 'react-spring'
 
 const Index = ()=>{
@@ -53,7 +53,13 @@ const Index = ()=>{
       </div>
 
       <div className="misc-holder">
-        <button style={style.button}><a href="/benko-resume.pdf" download style={{textDecoration:'none',color:'white'}}>Download My Resume</a></button>
+        <button style={style.button}>
+          <a href="/benko-resume.pdf" download style={{textDecoration:'none',color:'white'}}>
+            <IconContext.Provider value={{size:'2.5em'}}>
+              <FaDownload />
+            </IconContext.Provider>
+          </a>
+         </button>
       </div>
     </animated.div>
   )
