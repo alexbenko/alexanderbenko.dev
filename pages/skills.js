@@ -19,8 +19,8 @@ const Skills = ()=>{
 
 
   const imgStyle = {
-    verticalAlign: 'middle',
-    width: '50%',
+
+    width: '4em',
     height: 'auto'
   };
 
@@ -37,7 +37,7 @@ const Skills = ()=>{
           <div className="skill-imgages"  style={{paddingLeft:"10%",display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: '10%', gridAutoRows: 'minMax(10%, auto)'}}>
             {images.map((image,i)=>{
               return(
-                <animated.div style={props}>
+                <animated.div style={props} key={i}>
                   <Image file={'skills/' + image} styling={imgStyle} key={i}/>
                 </animated.div>
               )})}
