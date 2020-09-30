@@ -7,3 +7,30 @@ body{
   background-color: #444444;
   color: white;
 }
+
+
+.current{
+  -webkit-box-shadow: 1px 3px 27px -9px #000000;
+  box-shadow: 1px 3px 27px -9px #000000;
+  max-width: 25%;
+  height: auto;
+  cursor: pointer;
+  overflow-x: hidden
+}
+
+
+@media only screen and (max-width: 600px) {
+
+
+
+  .current{
+    -webkit-box-shadow: 1px 3px 27px -9px #000000;
+    box-shadow: 1px 3px 27px -9px #000000;
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+    overflow-x: hidden
+  }
+}
+
+
