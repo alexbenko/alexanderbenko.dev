@@ -20,7 +20,7 @@ const Skills = ()=>{
 
   const imgStyle = {
 
-    width: '4em',
+    width: '50%',
     height: 'auto'
   };
 
