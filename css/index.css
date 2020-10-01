@@ -21,8 +21,6 @@ body{
 
 @media only screen and (max-width: 600px) {
 
-
-
   .current{
     -webkit-box-shadow: 1px 3px 27px -9px #000000;
     box-shadow: 1px 3px 27px -9px #000000;
@@ -33,4 +31,15 @@ body{
   }
 }
 
+@media only screen and (max-width: 900px) {
+
+  .current{
+    -webkit-box-shadow: 1px 3px 27px -9px #000000;
+    box-shadow: 1px 3px 27px -9px #000000;
+    max-width: 50%;
+    height: auto;
+    cursor: pointer;
+    overflow-x: hidden
+  }
+}
 
