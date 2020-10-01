@@ -4,12 +4,17 @@ import Image from '../components/Image.jsx';
 import MyLayout from "../layouts/Layout";
 import Head from 'next/head';
 import {useSpring, animated} from 'react-spring';
-
-//React.useLayoutEffect = React.useEffect;
+import { IconContext } from "react-icons";
+import { FaSearch } from "react-icons/fa";
 
 const Adventures = () =>{
   const [gallery, setGallery] = useState([]);
-  const [current,setCurrent] = useState('agate.jpg');
+  const [current,setCurrent]  = useState('agate.jpg');
+  const [search,setSearch]    = useState('');
+  const [listHovered,setListHovered] = useState(false);
+  const [showPopup,setShowPopup] = useState(false);
+
+  const props = useSpring({opacity: 1, from: {opacity: 0}})
 
   useEffect(() => {
     axios.get('/api/adventures')
@@ -39,15 +44,114 @@ const Adventures = () =>{
     } else{
       setCurrent(gallery[currentIdx + 1])
     }
-  }
-
-  const imgStyle = {
-    width: '25em',
-    height: 'auto',
-    cursor:'pointer'
   };
 
-  let button = {
+  const distance = (s1,s2)=>{
+    //https://en.wikipedia.org/wiki/Levenshtein_distance
+    s1 = s1.toLowerCase();
+    s2 = s2.toLowerCase();
+
+    var costs = new Array();
+    for (var i = 0; i <= s1.length; i++) {
+      var lastValue = i;
+      for (var j = 0; j <= s2.length; j++) {
+        if (i == 0)
+          costs[j] = j;
+        else {
+          if (j > 0) {
+            var newValue = costs[j - 1];
+            if (s1.charAt(i - 1) != s2.charAt(j - 1))
+              newValue = Math.min(Math.min(newValue, lastValue),
+                costs[j]) + 1;
+            costs[j - 1] = lastValue;
+            lastValue = newValue;
+          }
+        }
+      }
+      if (i > 0)
+        costs[s2.length] = lastValue;
+    }
+    return costs[s2.length];
+  }
+
+  const similarity = (s1,s2) =>{
+    let longer = s1;
+    let shorter = s2;
+    if (s1.length < s2.length) {
+      longer = s2;
+      shorter = s1;
+    }
+    let longerLength = longer.length;
+    if (longerLength == 0) {
+      return 1.0;
+    }
+    return (longerLength - distance(longer, shorter)) / parseFloat(longerLength);
+  };
+
+  const getSearchResult = async ()=>{
+    let mostSimilar = gallery[0]
+
+    gallery.map((file)=>{
+      //longer word needs to be passed in first for the algo works properly
+      if(mostSimilar.length > search.length && file.length > search.length){
+        if(similarity(file,search) > similarity(mostSimilar,search)){
+          mostSimilar = file
+        }
+      } else {
+        if(similarity(search,file) > similarity(search,mostSimilar)){
+          mostSimilar = file
+        }
+      }
+    })
+
+    if(similarity(mostSimilar,search) > .2){
+      return Promise.resolve(mostSimilar)
+    } else {
+      return Promise.reject('Invalid Search')
+    }
+  };
+
+  const handleSubmit = async (e)=>{
+    e.preventDefault();
+    try{
+      let searchResult = await getSearchResult()
+      setCurrent(searchResult)
+    } catch(err){
+      alert(err)
+    } finally{
+      //reset search bar after submit
+      setSearch('')
+    }
+  };
+
+  const popup = ()=>{
+    return(
+      <animated.div style={props}>
+        <div className="file-list-popup" style={style.popup}>
+          {gallery.map((file,i)=>{
+            return <p key={i} onClick={()=>setCurrent(file)}>{file.split('.')[0]}</p>
+          })}
+        </div>
+      </animated.div>
+    )
+  }
+
+  let style = {};
+
+  style.listButton = {
+    backgroundColor: listHovered ? 'green' :'#32CD32',
+    border: 'none',
+    color: 'white',
+    padding: listHovered ? '24px' : '20px',
+    textAlign: 'center',
+    textDecoration: 'none',
+    fontSize: '16px',
+    margin: '0 5px',
+    cursor: 'pointer',
+    borderRadius:'15%'
+  };
+
+  style.button = {
     backgroundColor:'#32CD32',
     border: 'none',
     color: 'white',
@@ -55,14 +159,19 @@ const Adventures = () =>{
     textAlign: 'center',
     textDecoration: 'none',
     fontSize: '16px',
-    margin: '4px 2px',
+    margin: '0 5px',
     cursor: 'pointer',
-    borderRadius:'15%',
-    margin: '10px 0'
+    borderRadius:'15%'
   };
-  const props = useSpring({opacity: 1, from: {opacity: 0}})
+
+  style.popup = {
+    zIndex:'7',
+    backgroundColor:'black',
+    maxWidth:'50%'
+  }
+
   return(
-    <div className="adventures" style={{paddingBottom:'40%'}} >
+    <div className="adventures" style={{paddingBottom:'15%'}} >
       <Head>
         <title>Alexander Benko</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -72,33 +181,48 @@ const Adventures = () =>{
 
       <div className="current-image-holder" style={{textAlign:'center'}}>
         <h3>My Adventures</h3>
-        <h3>Click one of the buttons to cycle through images!</h3>
-        <p>{`${gallery.indexOf(current) + 1} out of ${gallery.length}`}</p>
+        <h3>Click one of the buttons or type in a name of a file to cycle through images!</h3>
 
-        <animated.div style={props}>
-          <picture className='current'>
-            <source className='current' srcSet={require(`../images/adventures/${current}?webp`)}  type="image/webp" />
-            <source className='current' srcSet={require(`../images/adventures/${current}`)}  type="image/jpeg" />
-            <img className='current' src={require(`../images/adventures/${current}`)} alt={`${current.split('.')[0]}`}/>
-          </picture>
 
-          <div style={{display:'flex',flexDirection:'row',justifyContent:'center',bottom:'100'}}>
-            <button style={button} onClick={()=>previousImg()}>Previous</button>
-            <button style={button} onClick={()=>nextImg()}>Next</button>
+        <animated.div style={props} >
+
+          <div className="current-image">
+            <picture className='current'>
+              <source className='current' srcSet={require(`../images/adventures/${current}?webp`)}  type="image/webp" />
+              <source className='current' srcSet={require(`../images/adventures/${current}`)}  type="image/jpeg" />
+              <img className='current' src={require(`../images/adventures/${current}`)} alt={`${current.split('.')[0]}`}/>
+            </picture>
+            <p>{`${gallery.indexOf(current) + 1} out of ${gallery.length}`}</p>
+          </div>
+
+          <div className="gallery-buttons" style={{display:'flex',flexDirection:'row',justifyContent:'center',margin:'10 auto',alignItems:'center'}}>
+            <button style={style.button} onClick={()=>previousImg()}>Previous</button>
+            <button style={style.button} onClick={()=>nextImg()}>Next</button>
+            <form onSubmit={(e)=>handleSubmit(e)} className="search-bar">
+              <input type="submit" style={{display: "none"}} />
+              <input type="text" onChange={(e) => setSearch(e.target.value)} value={search} style={{ padding: '10px'}}></input>
+            </form>
+            <div style={{paddingLeft:'1%',cursor:'pointer'}} onClick={(e)=>handleSubmit(e)}>
+              <FaSearch />
+            </div>
+          </div>
+
+          <div className="image-file-list">
+            <button style={style.listButton}
+            onMouseEnter={()=>setListHovered(!listHovered)}
+            onMouseLeave={()=>setListHovered(!listHovered)}
+            onClick={()=>setShowPopup(!showPopup)}
+            >
+              List Image Files {listHovered ? '?' : ''}
+            </button>
+
+            {showPopup ? popup() : ''}
+
           </div>
         </animated.div>
 
 
       </div>
-
-      {/*<div className="image-gallery" style={{paddingLeft:"10%"}}>
-        {gallery.map((img,i)=>{
-          return(
-            <Image key={i} file={'adventures/' + img} styling={imgStyle} func={(file)=>setCurrent(file.split('/')[1])}/>
-          )
-        })}
-      </div>*/}
-
     </div>
   )
 }
