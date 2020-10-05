@@ -5,7 +5,7 @@ const Skill = ({ title, Comp }) =>{
   const [clicked,setClicked] = useState(false);
   return(
     <div className={`${title}-holder`} onClick={()=>setClicked(!clicked)} style={{cursor:'pointer',textAlign:'center'}}>
-      <IconContext.Provider value={{size:'3em'}}>
+      <IconContext.Provider value={{size:'3em',color:'green'}}>
         {Comp}
       </IconContext.Provider>
       {clicked ? <h1>{title}</h1> : ''}
