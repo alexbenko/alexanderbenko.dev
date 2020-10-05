@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { IconContext } from "react-icons";
-import { FaBrain , FaGrav} from "react-icons/fa";
+import { FaGrav } from "react-icons/fa";
 
 const getIcon = (endpoint) =>{
   if(endpoint === '/adventures'){
@@ -11,7 +11,7 @@ const getIcon = (endpoint) =>{
   }
 }
 
-const NavItem = ({endpoint,router})=>{
+const NavItem = ({endpoint,router,icon})=>{
   let button = {
     width:'100%',
     backgroundColor: router.pathname == endpoint ? '#32CD32' :'#808080',
@@ -30,11 +30,13 @@ const NavItem = ({endpoint,router})=>{
   return(
     <div className={router.pathname == endpoint ? "active-link" : "not-active-link"}>
       <Link href={endpoint}>
-        <button style={button}>
-          <IconContext.Provider value={{size:'2.5em'}}>
-            {getIcon(endpoint)}
-          </IconContext.Provider>
-        </button>
+        <a style={{textDecoration:'none',color:'white'}}>
+          <button style={button}>
+            <IconContext.Provider value={{size:'2.5em'}}>
+              {icon}
+            </IconContext.Provider>
+          </button>
+        </a>
       </Link>
     </div>
   )
