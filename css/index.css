@@ -3,43 +3,56 @@
 
 }
 
+button{
+  cursor: pointer;
+}
+
 body{
   background-color: #444444;
   color: white;
 }
 
+.popup-item{
+  cursor: pointer;
+}
+
+.popup-item:hover{
+  color: yellow;
+}
 
 .current{
   -webkit-box-shadow: 1px 3px 27px -9px #000000;
   box-shadow: 1px 3px 27px -9px #000000;
   max-width: 25%;
   height: auto;
+  max-height: 75%;
   cursor: pointer;
-  overflow-x: hidden
+  overflow-x: hidden;
+}
+
+/*Ipads/tablets*/
+@media only screen and (max-width: 1224px) {
+  .current{
+    max-width: 60%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .current{
+    max-width: 45%;
+  }
 }
 
 
+/*mobile phones*/
 @media only screen and (max-width: 600px) {
-
   .current{
-    -webkit-box-shadow: 1px 3px 27px -9px #000000;
-    box-shadow: 1px 3px 27px -9px #000000;
-    max-width: 100%;
-    height: auto;
-    cursor: pointer;
-    overflow-x: hidden
+    max-width: 70%;
   }
 }
 
-@media only screen and (max-width: 900px) {
 
-  .current{
-    -webkit-box-shadow: 1px 3px 27px -9px #000000;
-    box-shadow: 1px 3px 27px -9px #000000;
-    max-width: 50%;
-    height: auto;
-    cursor: pointer;
-    overflow-x: hidden
-  }
+
+img {
+  image-orientation: from-image;
 }
-
