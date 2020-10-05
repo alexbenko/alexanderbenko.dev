@@ -24,6 +24,10 @@ const Adventures = () =>{
     .catch(err => console.error(err))
   },[]);
 
+  const capitalize = (string)=>{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   const previousImg = ()=>{
     let currentIdx = gallery.indexOf(current);
     //if current image is first in the gallery
@@ -89,6 +93,9 @@ const Adventures = () =>{
   };
 
   const getSearchResult = async ()=>{
+    if(search.length < 3){
+      return Promise.reject('Please Type at least 3 letters')
+    }
     let mostSimilar = gallery[0]
 
     gallery.map((file)=>{
@@ -104,10 +111,10 @@ const Adventures = () =>{
       }
     })
 
-    if(similarity(mostSimilar,search) > .2){
+    if(similarity(mostSimilar,search) > .4){
       return Promise.resolve(mostSimilar)
     } else {
-      return Promise.reject('Invalid Search')
+      return Promise.reject('Invalid Search, Please Try Again')
     }
   };
 
@@ -117,6 +124,7 @@ const Adventures = () =>{
       let searchResult = await getSearchResult()
       setCurrent(searchResult)
     } catch(err){
+      //I want to alert the user of any errors
       alert(err)
     } finally{
       //reset search bar after submit
@@ -126,13 +134,9 @@ const Adventures = () =>{
 
   const popup = ()=>{
     return(
-      <animated.div style={props}>
         <div className="file-list-popup" style={style.popup}>
-          {gallery.map((file,i)=>{
-            return <p key={i} onClick={()=>setCurrent(file)}>{file.split('.')[0]}</p>
-          })}
+          {gallery.map((file,i)=><p className="popup-item" key={i} onClick={()=>setCurrent(file)}>{capitalize(file.split('.')[0])}</p>)}
         </div>
-      </animated.div>
     )
   }
 
@@ -142,13 +146,14 @@ const Adventures = () =>{
     backgroundColor: listHovered ? 'green' :'#32CD32',
     border: 'none',
     color: 'white',
-    padding: listHovered ? '24px' : '20px',
+    padding: listHovered ? '14px' : '10px',
     textAlign: 'center',
     textDecoration: 'none',
     fontSize: '16px',
     margin: '0 5px',
     cursor: 'pointer',
-    borderRadius:'15%'
+    borderRadius:'15%',
+    marginRight:'20em'
   };
 
   style.button = {
@@ -166,14 +171,23 @@ const Adventures = () =>{
 
   style.popup = {
     zIndex:'7',
+    position:'absolute',
     backgroundColor:'black',
-    maxWidth:'50%'
+    maxWidth:'100%',
+    margin: '0 auto',
+    display:'block',
+    boxShadow:'0px 8px 16px 0px rgba(0,0,0,0.2)',
+    opacity:'77%'
+  }
+
+  style.popopHolder = {
+    position: 'relative',
+    display: 'inline-block'
   }
 
   return(
-    <div className="adventures" style={{paddingBottom:'15%'}} >
+    <div className="adventures" style={{paddingBottom:'26%'}} >
       <Head>
-        <title>Alexander Benko</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="shortcut icon" href="/adventures.ico" />
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"/>
@@ -183,9 +197,20 @@ const Adventures = () =>{
         <h3>My Adventures</h3>
         <h3>Click one of the buttons or type in a name of a file to cycle through images!</h3>
 
+        <div className="image-file-list" style={style.popopHolder}>
+            <button style={style.listButton}
+            onMouseEnter={()=>setListHovered(!listHovered)}
+            onMouseLeave={()=>setListHovered(!listHovered)}
+            onClick={()=>setShowPopup(!showPopup)}
+            >
+              List Image Files {listHovered ? '?' : ''}
+            </button>
 
-        <animated.div style={props} >
+            {showPopup ? popup() : ''}
 
+          </div>
+
+          <animated.div style={props} >
           <div className="current-image">
             <picture className='current'>
               <source className='current' srcSet={require(`../images/adventures/${current}?webp`)}  type="image/webp" />
@@ -198,6 +223,7 @@ const Adventures = () =>{
           <div className="gallery-buttons" style={{display:'flex',flexDirection:'row',justifyContent:'center',margin:'10 auto',alignItems:'center'}}>
             <button style={style.button} onClick={()=>previousImg()}>Previous</button>
             <button style={style.button} onClick={()=>nextImg()}>Next</button>
+
             <form onSubmit={(e)=>handleSubmit(e)} className="search-bar">
               <input type="submit" style={{display: "none"}} />
               <input type="text" onChange={(e) => setSearch(e.target.value)} value={search} style={{ padding: '10px'}}></input>
@@ -206,22 +232,7 @@ const Adventures = () =>{
               <FaSearch />
             </div>
           </div>
-
-          <div className="image-file-list">
-            <button style={style.listButton}
-            onMouseEnter={()=>setListHovered(!listHovered)}
-            onMouseLeave={()=>setListHovered(!listHovered)}
-            onClick={()=>setShowPopup(!showPopup)}
-            >
-              List Image Files {listHovered ? '?' : ''}
-            </button>
-
-            {showPopup ? popup() : ''}
-
-          </div>
         </animated.div>
-
-
       </div>
     </div>
   )
