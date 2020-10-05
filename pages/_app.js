@@ -8,6 +8,8 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <Layout>
       <NextSeo
+      title="Alexander Benko"
+      description="The portfolio website for Alexander Benko, a full stack software engineer with a specialty in Full Stack web applications."
         openGraph={{
           type: 'website',
           description: "Alexander Benko's Portfolio Website - Made with NextJs",
