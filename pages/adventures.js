@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import Image from '../components/Image.jsx';
 import MyLayout from "../layouts/Layout";
 import Head from 'next/head';
-import {useSpring, animated} from 'react-spring';
+import { useSpring, animated, config } from 'react-spring';
 import { IconContext } from "react-icons";
 import { FaSearch } from "react-icons/fa";
 
 const Adventures = () =>{
+  //state tracking
   const [gallery, setGallery] = useState([]);
   const [current,setCurrent]  = useState('agate.jpg');
   const [search,setSearch]    = useState('');
   const [listHovered,setListHovered] = useState(false);
   const [showPopup,setShowPopup] = useState(false);
 
-  const props = useSpring({opacity: 1, from: {opacity: 0}})
-
+  //ComponentDidMount?
   useEffect(() => {
     axios.get('/api/adventures')
     .then((res)=>{
@@ -24,6 +23,7 @@ const Adventures = () =>{
     .catch(err => console.error(err))
   },[]);
 
+  //Helper Functions
   const capitalize = (string)=>{
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
@@ -111,7 +111,7 @@ const Adventures = () =>{
       }
     })
 
-    if(similarity(mostSimilar,search) > .4){
+    if(similarity(mostSimilar,search) > .3){
       return Promise.resolve(mostSimilar)
     } else {
       return Promise.reject('Invalid Search, Please Try Again')
@@ -132,11 +132,24 @@ const Adventures = () =>{
     }
   };
 
+  //React spring style objects
+  const props = useSpring({opacity: 1, from: {opacity: 0}});
+  const popupAnimation = useSpring({
+    config: { ...config.stiff },
+    from: { opacity: 0 },
+    to: {
+      opacity: showPopup ? 1 : 0
+    }
+  });
+
+  //sub component functions
   const popup = ()=>{
     return(
+      <animated.div style={popupAnimation}>
         <div className="file-list-popup" style={style.popup}>
           {gallery.map((file,i)=><p className="popup-item" key={i} onClick={()=>setCurrent(file)}>{capitalize(file.split('.')[0])}</p>)}
         </div>
+      </animated.div>
     )
   }
 
@@ -186,7 +199,7 @@ const Adventures = () =>{
   }
 
   return(
-    <div className="adventures" style={{paddingBottom:'26%'}} >
+    <div className="adventures" style={{paddingBottom:'25%'}} >
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="shortcut icon" href="/adventures.ico" />
@@ -211,28 +224,28 @@ const Adventures = () =>{
           </div>
 
           <animated.div style={props} >
-          <div className="current-image">
-            <picture className='current'>
-              <source className='current' srcSet={require(`../images/adventures/${current}?webp`)}  type="image/webp" />
-              <source className='current' srcSet={require(`../images/adventures/${current}`)}  type="image/jpeg" />
-              <img className='current' src={require(`../images/adventures/${current}`)} alt={`${current.split('.')[0]}`}/>
-            </picture>
-            <p>{`${gallery.indexOf(current) + 1} out of ${gallery.length}`}</p>
-          </div>
-
-          <div className="gallery-buttons" style={{display:'flex',flexDirection:'row',justifyContent:'center',margin:'10 auto',alignItems:'center'}}>
-            <button style={style.button} onClick={()=>previousImg()}>Previous</button>
-            <button style={style.button} onClick={()=>nextImg()}>Next</button>
-
-            <form onSubmit={(e)=>handleSubmit(e)} className="search-bar">
-              <input type="submit" style={{display: "none"}} />
-              <input type="text" onChange={(e) => setSearch(e.target.value)} value={search} style={{ padding: '10px'}}></input>
-            </form>
-            <div style={{paddingLeft:'1%',cursor:'pointer'}} onClick={(e)=>handleSubmit(e)}>
-              <FaSearch />
+            <div className="current-image">
+              <picture className='current'>
+                <source className='current' srcSet={require(`../images/adventures/${current}?webp`)}  type="image/webp" />
+                <source className='current' srcSet={require(`../images/adventures/${current}`)}  type="image/jpeg" />
+                <img className='current' src={require(`../images/adventures/${current}`)} alt={`${current.split('.')[0]}`}/>
+              </picture>
+              <p>{`${gallery.indexOf(current) + 1} out of ${gallery.length}`}</p>
             </div>
-          </div>
-        </animated.div>
+
+            <div className="gallery-buttons" style={{display:'flex',flexDirection:'row',justifyContent:'center',margin:'10 auto',alignItems:'center'}}>
+              <button style={style.button} onClick={()=>previousImg()}>Previous</button>
+              <button style={style.button} onClick={()=>nextImg()}>Next</button>
+
+              <form onSubmit={(e)=>handleSubmit(e)} className="search-bar">
+                <input type="submit" style={{display: "none"}} />
+                <input type="text" onChange={(e) => setSearch(e.target.value)} value={search} style={{ padding: '10px'}}></input>
+              </form>
+              <div style={{paddingLeft:'1%',cursor:'pointer'}} onClick={(e)=>handleSubmit(e)}>
+                <FaSearch />
+              </div>
+            </div>
+          </animated.div>
       </div>
     </div>
   )
