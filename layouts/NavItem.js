@@ -13,7 +13,6 @@ const getIcon = (endpoint) =>{
 
 const NavItem = ({endpoint,router,icon})=>{
   let button = {
-    width:'100%',
     backgroundColor: router.pathname == endpoint ? '#32CD32' :'#808080',
     border: 'none',
     color: 'white',
