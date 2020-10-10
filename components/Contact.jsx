@@ -2,15 +2,6 @@ import React,{ useState } from 'react';
 import { IconContext } from "react-icons";
 
 const Contact = ({icon,title,url}) =>{
-  const [show,setShow] = useState(false);
-
-  const getIcon = ()=>{
-    return(
-      <IconContext.Provider value={{size:'2.5em'}}>
-        {icon}
-      </IconContext.Provider>
-    )
-  }
 
   const getTitle = ()=>{
     return(
@@ -21,7 +12,6 @@ const Contact = ({icon,title,url}) =>{
   const style = {}
 
   style.contactButton = {
-    width:'100%',
     backgroundColor:'#808080',
     border: 'none',
     color: 'white',
@@ -38,11 +28,12 @@ const Contact = ({icon,title,url}) =>{
 
 
   return(
-    <div className={`${title}`} onMouseEnter={()=>setShow(!show)} onMouseLeave={()=>setShow(!show)}>
+    <div className={`${title}`}>
       <a target="_blank" rel="noopener noreferrer" href={url} style={{textDecoration:'none',color:'white'}}>
-        <button style={style.contactButton}>
-          {show ? getTitle() : getIcon()}
-        </button>
+        <IconContext.Provider value={{size:'1.5em'}}>
+          {icon}
+        </IconContext.Provider>
+        <p>{title}</p>
       </a>
     </div>
   )
