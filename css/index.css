@@ -1,3 +1,6 @@
+html{
+  display: block;
+}
 * {
   box-sizing: border-box;
 
@@ -30,10 +33,21 @@ body{
   overflow-x: hidden;
 }
 
+.welcome-image{
+  max-width: 35%;
+  max-height: auto;
+  border-radius: 50%;
+  display: inline-block;
+}
+
 /*Ipads/tablets*/
 @media only screen and (max-width: 1224px) {
   .current{
     max-width: 60%;
+  }
+
+  .welcome-image{
+    max-width: 30%;
   }
 }
 
@@ -41,13 +55,21 @@ body{
   .current{
     max-width: 45%;
   }
+
+  .welcome-image{
+    max-width: 50%;
+  }
 }
 
 
 /*mobile phones*/
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 812px) {
   .current{
-    max-width: 70%;
+    max-width: 80%;
+  }
+
+  .welcome-image{
+    max-width: 50%;
   }
 }
 
