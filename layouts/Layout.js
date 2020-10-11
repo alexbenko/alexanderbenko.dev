@@ -11,8 +11,6 @@ import {useSpring, animated, config, useTransition} from 'react-spring'
 
 export default function MyLayout({ children }) {
   const [showPopup,setShowPopup] = useState(false);
-  const links = [{endpoint:'/',title:'Home'},{endpoint:'/adventures',title:'My Adventures'}];
-  const router = useRouter();
 
   const contacts = [
     {icon:<FaGithub/>,title:'Github',url:'https://github.com/alexbenko'},
