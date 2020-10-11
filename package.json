@@ -6,8 +6,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "docker-build": "docker build . -t abenk"
+    "start": "next start -p $PORT",
+    "docker-build": "docker build . -t abenk",
+    "docker-run": "docker run -p 3000:3000 abenk",
+    "export": "next export",
+    "deploy": "npm run build && npm run export"
   },
   "repository": {
     "type": "git",
