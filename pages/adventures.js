@@ -225,8 +225,13 @@ const Adventures = () =>{
 
           <animated.div style={props} >
             <div className="current-image">
-              <img className="blurred" src={require(`../images/adventures/${current}?lqip`)} />
-              <img className="current" src={require(`../images/adventures/${current}?webp`)} />
+
+              <picture className='current'>
+                <source className='current' srcSet={require(`../images/adventures/${current}?webp?resize&size=1000`)}  type="image/webp" />
+                <source className='current' srcSet={require(`../images/adventures/${current}`)}  type="image/jpeg" />
+                <img className='current' src={require(`../images/adventures/${current}?webp?resize&size=1000`)} alt={`${current.split('.')[0]}`}/>
+              </picture>
+
               <p>{`${gallery.indexOf(current) + 1} out of ${gallery.length}`}</p>
             </div>
 

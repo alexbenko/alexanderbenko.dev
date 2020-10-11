@@ -78,61 +78,29 @@ body{
 }
 
 .blurred{
-  filter: blur(25px);
-  max-width: 25%;
+  position: absolute;
+  filter: blur(10px);
+  width: 25%;
   height: auto;
   overflow-x: hidden;
 }
 
 .current{
+
   -webkit-box-shadow: 1px 3px 27px -9px #000000;
   box-shadow: 1px 3px 27px -9px #000000;
-  max-width: 25%;
+  width: 400px;
   height: auto;
-  max-height: 75%;
   cursor: pointer;
   overflow-x: hidden;
 }
 
 
 .welcome-image{
-  max-width: 35%;
-  max-height: auto;
+  width: 300px;
+  height: auto;
   border-radius: 50%;
   display: inline-block;
-}
-
-/*Ipads/tablets*/
-@media only screen and (max-width: 1224px) {
-  .current{
-    max-width: 50%;
-  }
-
-  .welcome-image{
-    max-width: 40%;
-  }
-}
-
-@media only screen and (max-width: 1000px) {
-  .current{
-    max-width: 45%;
-  }
-
-  .welcome-image{
-    max-width: 50%;
-  }
-}
-
-
-/*mobile phones*/
-@media only screen and (max-width: 812px) {
-  .current{
-    max-width: 80%;
-  }
-
-  .welcome-image{
-    max-width: 60%;
-  }
 }
 
 
