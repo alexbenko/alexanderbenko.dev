@@ -11,32 +11,37 @@ import { useSpring,animated,useTrail } from "react-spring";
 //icons
 import { IconContext } from "react-icons";
 import { FaReact, FaHtml5, FaCss3Alt, FaNodeJs, FaDocker, FaGitAlt, FaGithub, FaNpm } from "react-icons/fa";
-import { SiFlask, SiPostgresql, SiMysql, SiMongodb, SiJavascript, SiPython, SiNextDotJs, SiNginx, SiGraphql, SiGo } from "react-icons/si";
+import { SiFlask, SiPostgresql, SiMysql, SiMongodb, SiJavascript, SiPython, SiNextDotJs, SiNginx, SiGraphql, SiGo, SiDeno } from "react-icons/si";
 import { CgCPlusPlus } from "react-icons/cg"
 
 
 const Index = ()=>{
   const [isLoaded,setLoaded] = useState(false);
   const [show,setShow] = useState(false)
-  const welcomeMessage = ['Hello ! My Name is Alexander Benko','I learned how to code in a National Park','And Welcome to my Website'];
+  const welcomeMessage = ['Hello ! My Name is Alexander Benko...','I am a Full Stack Software Engineer...','And I learned how to code in a National Park...'];
 
   //arrays to store the name of and the icon for every software skill I am proficient in
-  const top = [{title:'React',Comp: <FaReact />}, {title:'Nodejs',Comp:<FaNodeJs />},{title:'Go',Comp:<SiGo />}];
+  const top = [{category:'Top Skills',title:'React',Comp: <FaReact />}, {title:'Nodejs',Comp:<FaNodeJs />},{title:'Go',Comp:<SiGo />}];
   const languages = [
-    {title:'Javscript',Comp: <SiJavascript />}, {title:'Go',Comp:<SiGo />},
-    {title:'Python',Comp: <SiPython />}, {title:'C++', Comp: <CgCPlusPlus />}
+    {category:'Languages',title:'Javscript',Comp: <SiJavascript />},
+    {title:'Go',Comp:<SiGo />},
+    {title:'Python',Comp: <SiPython />}
   ];
 
-  const frontEnd = [{title:'React',Comp:<FaReact />},{title:'Html5',Comp: <FaHtml5 />}, {title:'Css3',Comp:<FaCss3Alt />}];
-  const backEnd = [{title:'Nodejs',Comp:<FaNodeJs />}, {title:'Flask',Comp:<SiFlask />}];
-  const databases = [{title:'PostgreSQL', Comp: <SiPostgresql />}, {title:'MySQL', Comp: <SiMysql />}, {title:'MongoDB', Comp: <SiMongodb />}];
+  const frontEnd = [{category:'FrontEnd',title:'React',Comp:<FaReact />},{title:'Html5',Comp: <FaHtml5 />}, {title:'Css3',Comp:<FaCss3Alt />}];
+  const backEnd = [{category:'Backend',title:'Nodejs',Comp:<FaNodeJs />}, {title:'Flask',Comp:<SiFlask />},{title:'Deno',Comp:<SiDeno/>}];
+
+  const databases = [
+    {category:'Databases',title:'PostgreSQL', Comp: <SiPostgresql />},
+    {title:'MySQL', Comp: <SiMysql />}, {title:'MongoDB', Comp: <SiMongodb />}
+  ];
 
   const misc = [
-    {title:'Docker', Comp: <FaDocker />}, {title:'Nextjs',Comp: <SiNextDotJs />}, {title:'Git', Comp:<FaGitAlt/>}, {title:'Nginx', Comp: <SiNginx />}, {title:'GraphQl', Comp:<SiGraphql />}
+    {category:'Misc.',title:'Docker', Comp: <FaDocker />}, {title:'Nextjs',Comp: <SiNextDotJs />}, {title:'Git', Comp:<FaGitAlt/>}, {title:'Nginx', Comp: <SiNginx />}, {title:'GraphQl', Comp:<SiGraphql />}
   ];
 
   //turn the recently declared arrays into an array of arrays. Yo Dawg I heard you like arrays...
-  const allSkills = [top,languages,frontEnd,backEnd,databases,misc]
+  const allSkills = [languages,frontEnd,backEnd,databases,misc]
 
   //react spring style objects
   const config = { mass: 15, tension: 1000, friction: 200 };
@@ -73,21 +78,29 @@ const Index = ()=>{
         </Head>
 
 
-        <div className="welcome-content" style={{textAlign:'center',width:'50%',margin:'0 auto'}}>
+        <Image file={'me.jpg'}/>
+        <br/>
+
+        <div className="welcome_content" style={{overflow:'scroll',textAlign:'center',width:'50%',margin:'0 auto',fontSize:'22px',lineHeight:'26px'}}>
           {trail.map(({ x, height, ...rest }, index) => (
             <animated.div
               key={welcomeMessage[index]}
-              className="trails-text"
+              className="trails_text"
               style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`) }}>
-              <animated.div style={{ height }}>{welcomeMessage[index]}</animated.div>
+              <animated.p style={{ height }}>{welcomeMessage[index]}</animated.p>
             </animated.div>
           ))}
         </div>
 
-        <Image file={'me.jpg'}/>
+        <div className="top_skills" style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
+          <h1 style={{textAlign:'center'}}>{top[0].category}</h1>
+          <div style={{display:'flex',flexDirection:'row',textAlign:'center'}}>
+            {top.map((skill,i)=> <Skill key={i} title={skill.title} Comp={skill.Comp}/>)}
+          </div>
+        </div>
 
-        <div style={{textAlign:'center'}}>
-          <button onClick={()=>setShow(!show)} style={style.button}>Full List</button>
+        <div className="full_list_of_skills" style={{textAlign:'center'}}>
+          <button onClick={()=>setShow(!show)} style={style.button}>{show ? 'Close' : 'Full List'}</button>
           {show ? <AllSkills allSkills={allSkills}/> : ''}
         </div>
     </div>

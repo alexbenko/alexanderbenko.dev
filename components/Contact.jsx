@@ -29,11 +29,9 @@ const Contact = ({icon,title,url}) =>{
 
   return(
     <div className={`${title}`}>
-      <a target="_blank" rel="noopener noreferrer" href={url} style={{textDecoration:'none',color:'white'}}>
-        <IconContext.Provider value={{size:'1.5em'}}>
-          {icon}
-        </IconContext.Provider>
-        <p>{title}</p>
+      <a target="_blank" rel="noopener noreferrer" href={url} style={{textDecoration:'none',color:'white',fontSize:'22px'}}>
+        {icon}
+        <span style={{paddingLeft:'1%'}}>{title}</span>
       </a>
     </div>
   )

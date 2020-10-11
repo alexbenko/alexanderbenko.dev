@@ -4,11 +4,11 @@ import { IconContext } from "react-icons";
 const Skill = ({ title, Comp }) =>{
   const [clicked,setClicked] = useState(false);
   return(
-    <div className={`${title}-holder`} onClick={()=>setClicked(!clicked)} style={{alignItems:'center'}}>
+    <div className={`${title}-holder`} style = {{cursor:'pointer'}} onClick={()=>setClicked(!clicked)}>
       <IconContext.Provider value={{size:'3.5em',color:'#32CD32'}}>
         {Comp}
       </IconContext.Provider>
-      {clicked ? <h2 style={{color:'#32CD32'}}>{title}</h2> : ''}
+      {clicked ? <h2 style={{color:'#32CD32',paddingLeft:'10%'}}>{title}</h2> : ''}
     </div>
   )
 };

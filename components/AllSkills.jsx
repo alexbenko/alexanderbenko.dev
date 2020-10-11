@@ -6,26 +6,32 @@ import { useSpring,animated,config } from "react-spring"
 const AllSKills = ({ allSkills }) =>{
   const p = useSpring({opacity: 1, from: {opacity: 0}})
   return(
-    <div className="all-skills-container" style={{clear:'both',alignItems:'center'}}>
+    <div className="all-skills-container" style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
       <animated.p style={p}>Click On a icon If you don't recognize it</animated.p>
       {allSkills.map((skillData,i) =>{
         return(
-          <animated.div
-            style={useSpring({
-              config:{ ...config.default },
-              opacity: 1,
-              delay: 200 + (i * 100),
-              reset: true,
-              transform: 'translateX(0px)',
-              from: {
-                opacity: 0,
-                transform: 'translateX(-250px)'
-              }
-            })}>
-            <div className="skill-container" key={i} style={{textAlign:'center',display:'flex',flexDirection:'row',alignItems:'center'}}>
+          <div className="skills-holder" style={{}}>
+            {skillData[0].category !== undefined ? <h3>{skillData[0].category}</h3> : ''}
+            <animated.div
+              key={i}
+              style={useSpring({
+                config:{ ...config.default },
+                opacity: 1,
+                delay: 200 + (i * 100),
+                reset: true,
+                transform: 'translateX(0px)',
+                from: {
+                  display:'flex',
+                  flexDirection:'row',
+                  opacity: 0,
+                  transform: 'translateX(-250px)'
+                }
+              })}>
+
               {skillData.map((skill,i)=> <Skill title={skill.title} Comp={skill.Comp} key={i}/>)}
-            </div>
-          </animated.div>
+
+            </animated.div>
+          </div>
         )
       })}
     </div>
