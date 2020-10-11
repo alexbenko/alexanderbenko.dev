@@ -2,13 +2,6 @@ import React,{ useState } from 'react';
 import { IconContext } from "react-icons";
 
 const Contact = ({icon,title,url}) =>{
-
-  const getTitle = ()=>{
-    return(
-      <h3>{title}</h3>
-    )
-  }
-
   const style = {}
 
   style.contactButton = {

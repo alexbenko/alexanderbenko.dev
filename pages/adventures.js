@@ -6,7 +6,7 @@ import { useSpring, animated, config } from 'react-spring';
 import { IconContext } from "react-icons";
 import { FaSearch } from "react-icons/fa";
 
-const Adventures = () =>{
+const Adventures = ({noTest = true}) =>{
   //state tracking
   const [gallery, setGallery] = useState([]);
   const [current,setCurrent]  = useState('agate.jpg');
@@ -226,11 +226,14 @@ const Adventures = () =>{
           <animated.div style={props} >
             <div className="current-image">
 
-              <picture className='current'>
-                <source className='current' srcSet={require(`../images/adventures/${current}?webp?resize&size=1000`)}  type="image/webp" />
-                <source className='current' srcSet={require(`../images/adventures/${current}`)}  type="image/jpeg" />
-                <img className='current' src={require(`../images/adventures/${current}?webp?resize&size=1000`)} alt={`${current.split('.')[0]}`}/>
-              </picture>
+              {noTest ?
+                <picture className='current'>
+                  <source className='current' srcSet={require(`../images/adventures/${current}?webp?resize&size=1000`)}  type="image/webp" />
+                  <source className='current' srcSet={require(`../images/adventures/${current}`)}  type="image/jpeg" />
+                  <img className='current' src={require(`../images/adventures/${current}?webp?resize&size=1000`)} alt={`${current.split('.')[0]}`}/>
+                </picture> :
+                <img className="current" src={`../images/adventures/${current}`}></img>
+              }
 
               <p>{`${gallery.indexOf(current) + 1} out of ${gallery.length}`}</p>
             </div>
