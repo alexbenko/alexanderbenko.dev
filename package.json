@@ -4,13 +4,13 @@
   "description": "Portfolio site for Alexander Benko",
   "main": "server.js",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next",
     "build": "next build",
     "start": "next start -p $PORT",
     "docker-build": "docker build . -t abenk",
     "docker-run": "docker run -p 3000:3000 abenk",
-    "export": "next export",
-    "deploy": "npm run build && npm run export"
+    "h-build":"npm run build && heroku container:push web -a alexanderbenko",
+    "deploy":"heroku container:release web -a alexanderbenko"
   },
   "repository": {
     "type": "git",

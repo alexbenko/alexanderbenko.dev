@@ -17,7 +17,8 @@ import { CgCPlusPlus } from "react-icons/cg"
 
 const Index = ()=>{
   const [isLoaded,setLoaded] = useState(false);
-  const [show,setShow] = useState(false)
+  const [show,setShow] = useState(false);
+  const [render,setRender] = useState(false);
   const welcomeMessage = ['Hello ! My Name is Alexander Benko...','I am a Full Stack Software Engineer...','And I learned how to code in a National Park...'];
 
   //arrays to store the name of and the icon for every software skill I am proficient in
@@ -77,7 +78,6 @@ const Index = ()=>{
           <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"/>
         </Head>
 
-
         <Image file={'me.jpg'}/>
         <br/>
 
@@ -103,6 +103,8 @@ const Index = ()=>{
           <button onClick={()=>setShow(!show)} style={style.button}>{show ? 'Close' : 'Full List'}</button>
           {show ? <AllSkills allSkills={allSkills}/> : ''}
         </div>
+
+
     </div>
   )
 }

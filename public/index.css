@@ -15,6 +15,7 @@ body{
   color: white;
 }
 
+
 .popup-item{
   cursor: pointer;
 }
@@ -76,6 +77,12 @@ body{
   }
 }
 
+.blurred{
+  filter: blur(25px);
+  max-width: 25%;
+  height: auto;
+  overflow-x: hidden;
+}
 
 .current{
   -webkit-box-shadow: 1px 3px 27px -9px #000000;
