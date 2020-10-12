@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Image = ({ file }) =>{
+const Image = ({ file, name}) =>{
   const [loading,setLoading] = useState(true);
 
   useEffect(()=>{
@@ -8,10 +8,10 @@ const Image = ({ file }) =>{
   })
 
   return (
-      <div className='welcome-image-container' style={{textAlign:'center',padding:'15px'}}>
+      <div className={`${name}-container`} style={{textAlign:'center',padding:'15px'}}>
         {loading ?
-          <img className="welcome-image-blur" src={require(`../images/${file}?lqip`)} alt={`${file.split('.'[0])}`}/> :
-          <img className="welcome-image" src={require(`../images/${file}?webp?resize&size=400`)} alt={`${file.split('.'[0])}`}/>
+          <img className={`${name}-blur`} src={require(`../images/${file}?lqip`)} alt={`${file.split('.'[0])}`}/> :
+          <img className={`${name}`} src={require(`../images/${file}?webp?resize&size=400`)} alt={`${file.split('.'[0])}`}/>
         }
       </div>
     );
