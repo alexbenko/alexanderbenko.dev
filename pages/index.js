@@ -15,7 +15,7 @@ import { SiFlask, SiPostgresql, SiMysql, SiMongodb, SiJavascript, SiPython, SiNe
 import { CgCPlusPlus } from "react-icons/cg"
 
 
-const Index = ()=>{
+const Index = ({noTest = true})=>{
   const [isLoaded,setLoaded] = useState(false);
   const [show,setShow] = useState(false);
   const [render,setRender] = useState(false);
@@ -78,7 +78,8 @@ const Index = ()=>{
           <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"/>
         </Head>
 
-        <Image file={'me.jpg'}/>
+        {noTest ? <Image file={'me.jpg'}/> : <img className="current" src={`../images/me.jpg`}></img>}
+
         <br/>
 
         <div className="welcome_content" style={{overflow:'scroll',textAlign:'center',width:'50%',margin:'0 auto',fontSize:'22px',lineHeight:'26px'}}>
