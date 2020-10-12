@@ -228,9 +228,9 @@ const Adventures = ({noTest = true}) =>{
 
               {noTest ?
                 <picture className='current'>
-                  <source className='current' srcSet={require(`../images/adventures/${current}?webp?resize&size=1000`)}  type="image/webp" />
+                  <source className='current' srcSet={require(`../images/adventures/${current}?webp?resize&size=500`)}  type="image/webp" />
                   <source className='current' srcSet={require(`../images/adventures/${current}`)}  type="image/jpeg" />
-                  <img className='current' src={require(`../images/adventures/${current}?webp?resize&size=1000`)} alt={`${current.split('.')[0]}`}/>
+                  <img className='current' src={require(`../images/adventures/${current}?webp?resize&size=500`)} alt={`${current.split('.')[0]}`}/>
                 </picture> :
                 <img className="current" src={`../images/adventures/${current}`}></img>
               }
