@@ -12,7 +12,6 @@ import { useSpring,animated,useTrail } from "react-spring";
 import { IconContext } from "react-icons";
 import { FaReact, FaHtml5, FaCss3Alt, FaNodeJs, FaDocker, FaGitAlt, FaGithub, FaNpm } from "react-icons/fa";
 import { SiFlask, SiPostgresql, SiMysql, SiMongodb, SiJavascript, SiPython, SiNextDotJs, SiNginx, SiGraphql, SiGo, SiDeno } from "react-icons/si";
-import { CgCPlusPlus } from "react-icons/cg"
 
 
 const Index = ({noTest = true})=>{
