@@ -15,9 +15,7 @@ import { SiFlask, SiPostgresql, SiMysql, SiMongodb, SiJavascript, SiPython, SiNe
 
 
 const Index = ({noTest = true})=>{
-  const [isLoaded,setLoaded] = useState(false);
   const [show,setShow] = useState(false);
-  const [render,setRender] = useState(false);
   const welcomeMessage = ['Hello ! My Name is Alexander Benko...','I am a Full Stack Software Engineer...','And I learned how to code in a National Park...'];
 
   //arrays to store the name of and the icon for every software skill I am proficient in
