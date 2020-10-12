@@ -96,15 +96,19 @@ body{
 }
 
 .welcome-image-blur{
+  border: 5px solid #555;
   width: 300px;
-  height: auto;
+  height: 325px;
   filter: blur(15px);
-  display: inline-block;
+  object-fit: cover;
+  border-radius:50%;
 }
 
 .welcome-image{
+  border: 5px solid #555;
   width: 300px;
-  height: auto;
-  display: inline-block;
+  height: 325px;
+  object-fit: cover;
+  border-radius:50%;
 }
 
