@@ -12,13 +12,10 @@ import { useSpring,animated,useTrail } from "react-spring";
 import { IconContext } from "react-icons";
 import { FaReact, FaHtml5, FaCss3Alt, FaNodeJs, FaDocker, FaGitAlt, FaGithub, FaNpm } from "react-icons/fa";
 import { SiFlask, SiPostgresql, SiMysql, SiMongodb, SiJavascript, SiPython, SiNextDotJs, SiNginx, SiGraphql, SiGo, SiDeno } from "react-icons/si";
-import { CgCPlusPlus } from "react-icons/cg"
 
 
 const Index = ({noTest = true})=>{
-  const [isLoaded,setLoaded] = useState(false);
   const [show,setShow] = useState(false);
-  const [render,setRender] = useState(false);
   const welcomeMessage = ['Hello ! My Name is Alexander Benko...','I am a Full Stack Software Engineer...','And I learned how to code in a National Park...'];
 
   //arrays to store the name of and the icon for every software skill I am proficient in
@@ -78,7 +75,7 @@ const Index = ({noTest = true})=>{
           <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"/>
         </Head>
 
-        {noTest ? <Image file={'me.jpg'}/> : <img className="current" src={`../images/me.jpg`}></img>}
+        {noTest ? <Image file={'me.jpg'}/> : <img src={`../images/me.jpg`}></img>}
 
         <br/>
 
