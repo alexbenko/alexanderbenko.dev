@@ -95,16 +95,16 @@ body{
   overflow-x: hidden;
 }
 
+.welcome-image-blur{
+  width: 300px;
+  height: auto;
+  filter: blur(15px);
+  display: inline-block;
+}
 
 .welcome-image{
   width: 300px;
   height: auto;
-  border-radius: 50%;
   display: inline-block;
 }
 
-
-
-img {
-  image-orientation: from-image;
-}
