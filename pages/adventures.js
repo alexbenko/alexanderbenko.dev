@@ -216,7 +216,7 @@ const Adventures = ({noTest = true}) =>{
             onMouseLeave={()=>setListHovered(!listHovered)}
             onClick={()=>setShowPopup(!showPopup)}
             >
-              List Image Files {listHovered ? '?' : ''}
+              List Images {listHovered ? '?' : ''}
             </button>
 
             {showPopup ? popup() : ''}
