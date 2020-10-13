@@ -75,7 +75,7 @@ const Index = ({noTest = true})=>{
           <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"/>
         </Head>
 
-        {noTest ? <Image file={'me.jpg'}/> : <img src={`../images/me.jpg`}></img>}
+        {noTest ? <Image file={'me.jpg'} name={"welcome-image"}/> : <img src={`../images/me.jpg`}></img>}
 
         <br/>
 

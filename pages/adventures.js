@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
+
+import Image from '../components/Image.jsx';
 import MyLayout from "../layouts/Layout";
+
+import axios from 'axios';
 import Head from 'next/head';
 import { useSpring, animated, config } from 'react-spring';
+
 import { IconContext } from "react-icons";
 import { FaSearch } from "react-icons/fa";
 
@@ -227,11 +231,7 @@ const Adventures = ({noTest = true}) =>{
             <div className="current-image">
 
               {noTest ?
-                <picture className='current'>
-                  <source className='current' srcSet={require(`../images/adventures/${current}?webp?resize&size=500`)}  type="image/webp" />
-                  <source className='current' srcSet={require(`../images/adventures/${current}`)}  type="image/jpeg" />
-                  <img className='current' src={require(`../images/adventures/${current}?webp?resize&size=500`)} alt={`${current.split('.')[0]}`}/>
-                </picture> :
+                <Image file={`adventures/${current}`} name={"current"}/> :
                 <img className="current" src={`../images/adventures/${current}`}></img>
               }
 
