@@ -238,18 +238,22 @@ const Adventures = ({noTest = true}) =>{
               <p>{`${gallery.indexOf(current) + 1} out of ${gallery.length}`}</p>
             </div>
 
-            <div className="gallery-buttons" style={{display:'flex',flexDirection:'row',justifyContent:'center',margin:'10 auto',alignItems:'center'}}>
+
+            <div className="gallery-buttons" style={{display:'flex',flexDirection:'row',justifyContent:'center'}}>
               <button style={style.button} onClick={()=>previousImg()}>Previous</button>
               <button style={style.button} onClick={()=>nextImg()}>Next</button>
-
-              <form onSubmit={(e)=>handleSubmit(e)} className="search-bar">
-                <input type="submit" style={{display: "none"}} />
-                <input type="text" onChange={(e) => setSearch(e.target.value)} value={search} style={{ padding: '10px'}}></input>
-              </form>
-              <div style={{paddingLeft:'1%',cursor:'pointer'}} onClick={(e)=>handleSubmit(e)}>
-                <FaSearch />
-              </div>
             </div>
+
+            <div className="search_bar_container" style={{display:'flex',flexDirection:'row',justifyContent:'center',paddingLeft:'19px',paddingTop:'10px'}}>
+                <form onSubmit={(e)=>handleSubmit(e)} className="search-bar">
+                  <input type="submit" style={{display: "none"}} />
+                  <input type="text" placeholder = "Search A Photo Here..."onChange={(e) => setSearch(e.target.value)} value={search} style={{ padding: '10px'}}></input>
+                </form>
+                <div style={{padding:'8px',cursor:'pointer',backgroundColor:'#32CD32',display:'flex',justifyContent:'center'}} onClick={(e)=>handleSubmit(e)}>
+                  <FaSearch />
+                </div>
+            </div>
+
           </animated.div>
       </div>
     </div>
