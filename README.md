@@ -15,6 +15,9 @@
 <p>Using Next.js's Image Optimization Plugin, I was able to self host my images and did not use an external host.</p>
 <p>Like every software project I find a new idea/concept to implement so I can get more comfortable with it. This time is was using React Hooks instead of using a stateful component.</p>
 
+Current Speed Test:
+<img src="/speed_test.png"></img>
+
 <ol>
   This is best demonstrated in these parts:
   <li>https://github.com/alexbenko/alexanderbenko.dev/blob/master/pages/adventures.js</li>
