@@ -7,7 +7,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start -p $PORT",
-    "test":"jest",
+    "test": "jest",
     "docker-build": "docker build . -t abenk",
     "docker-run": "docker run -p 3000:3000 abenk",
     "h-build": "npm run build && heroku container:push web -a alexanderbenko",
