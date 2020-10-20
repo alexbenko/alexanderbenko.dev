@@ -107,7 +107,7 @@ body{
 
 @media screen and (max-height: 823px) {
   .current{
-    width: 330px;
+    width: 360px;
   }
   .current-blur{
     width: 360px;
