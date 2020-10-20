@@ -139,6 +139,7 @@ const Adventures = ({noTest = true}) =>{
   //React spring style objects
   const props = useSpring({opacity: 1, from: {opacity: 0}});
   const popupAnimation = useSpring({
+    reset: showPopup,
     config: { ...config.stiff },
     from: { opacity: 0 },
     to: {
@@ -160,7 +161,7 @@ const Adventures = ({noTest = true}) =>{
   let style = {};
 
   style.listButton = {
-    backgroundColor: listHovered ? 'green' :'#32CD32',
+    backgroundColor: listHovered ? 'grey' :'rgb(0, 255, 51)',
     border: 'none',
     color: 'white',
     padding: listHovered ? '14px' : '10px',
@@ -174,9 +175,9 @@ const Adventures = ({noTest = true}) =>{
   };
 
   style.button = {
-    backgroundColor:'#32CD32',
+    backgroundColor:'rgb(0, 255, 51)',
     border: 'none',
-    color: 'white',
+    color: 'black',
     padding: '20px',
     textAlign: 'center',
     textDecoration: 'none',
@@ -194,7 +195,7 @@ const Adventures = ({noTest = true}) =>{
     margin: '0 auto',
     display:'block',
     boxShadow:'0px 8px 16px 0px rgba(0,0,0,0.2)',
-    opacity:'77%'
+
   }
 
   style.popopHolder = {
@@ -220,7 +221,7 @@ const Adventures = ({noTest = true}) =>{
             onMouseLeave={()=>setListHovered(!listHovered)}
             onClick={()=>setShowPopup(!showPopup)}
             >
-              List Images {listHovered ? '?' : ''}
+              <span style={{color:'black'}}>List Images {listHovered ? '?' : ''}</span>
             </button>
 
             {showPopup ? popup() : ''}
@@ -249,7 +250,7 @@ const Adventures = ({noTest = true}) =>{
                   <input type="submit" style={{display: "none"}} />
                   <input type="text" placeholder = "Search A Photo Here..."onChange={(e) => setSearch(e.target.value)} value={search} style={{ padding: '10px'}}></input>
                 </form>
-                <div style={{padding:'8px',cursor:'pointer',backgroundColor:'#32CD32',display:'flex',justifyContent:'center'}} onClick={(e)=>handleSubmit(e)}>
+                <div style={{padding:'8px',cursor:'pointer',backgroundColor:'rgb(0, 255, 51)',display:'flex',justifyContent:'center'}} onClick={(e)=>handleSubmit(e)}>
                   <FaSearch />
                 </div>
             </div>
