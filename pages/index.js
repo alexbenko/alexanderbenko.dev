@@ -71,6 +71,7 @@ const Index = ({noTest = true})=>{
     <div className="home" style={{zIndex:'1',overflow:'scroll'}}>
         <Head>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <meta name="og:keywords" content="Software,Eningeer,Software Engineer,Full Stack Software Engineer, hiring, looking,looking to hire,react,javascript,node,nodejs"/>
           <link rel="shortcut icon" href="/home.ico" />
           <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"/>
         </Head>
