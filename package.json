@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start -p $PORT",
     "test": "jest",
-    "deploy":"git yeet && gh pr create"
+    "deploy":"git yeet && gh pr create",
+    "merge":"gh pr merge"
   },
   "repository": {
     "type": "git",
