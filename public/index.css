@@ -11,8 +11,12 @@ button{
 }
 
 body{
-  background-color: #444444;
-  color: white;
+  background-color: #000000;
+  color: rgb(0, 255, 51);
+}
+
+a{
+  color:rgb(0, 255, 51);
 }
 
 
@@ -49,7 +53,7 @@ body{
   padding: 8px;
   text-decoration: none;
   font-size: 36px;
-  color: #818181;
+  color: rgb(0, 255, 51);
   display: block;
   transition: 0.3s;
 }
