@@ -8,10 +8,7 @@
     "build": "next build",
     "start": "next start -p $PORT",
     "test": "jest",
-    "docker-build": "docker build . -t abenk",
-    "docker-run": "docker run -p 3000:3000 abenk",
-    "h-build": "npm run build && heroku container:push web -a alexanderbenko",
-    "deploy": "heroku container:release web -a alexanderbenko"
+    "deploy":"git yeet && gh pr create"
   },
   "repository": {
     "type": "git",

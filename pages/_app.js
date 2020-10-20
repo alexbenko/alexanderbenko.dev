@@ -12,10 +12,18 @@ export default function MyApp({ Component, pageProps }) {
       description="The portfolio website for Alexander Benko, a full stack software engineer with a specialty in Full Stack web applications."
         openGraph={{
           type: 'website',
-          description: "Alexander Benko's Portfolio Website - Made with NextJs",
+          description: "Alexander Benko,your next Software Engineer",
+          images : [
+            {
+              url: require('../images/me.jpg'),
+              width: 800,
+              height: 600,
+              alt: 'It is me'
+            }
+          ],
           locale: 'en_IE',
           url: 'https://www.alexanderbenko.dev',
-          site_name: "Alexander Benko-Software Engineer",
+          site_name: "Alexander Benko",
         }}
       />
       <Component {...pageProps} />
