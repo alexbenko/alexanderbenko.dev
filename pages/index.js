@@ -54,9 +54,9 @@ const Index = ({noTest = true})=>{
   //css style objects
   let style = {};
   style.button = {
-    backgroundColor: '#32CD32',
+    backgroundColor: 'rgb(0, 255, 51)',
     border: 'none',
-    color: 'white',
+    color: 'black',
     padding: '20px',
     textAlign: 'center',
     textDecoration: 'none',
