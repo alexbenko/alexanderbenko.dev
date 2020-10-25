@@ -80,6 +80,8 @@ a{
   top: 15px;
   right: 35px;
   }
+
+
 }
 
 .blurred{
@@ -116,6 +118,7 @@ a{
   .current-blur{
     width: 360px;
   }
+
 }
 
 .welcome-image-blur{
