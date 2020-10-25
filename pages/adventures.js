@@ -250,8 +250,11 @@ const Adventures = ({noTest = true}) =>{
                   <input type="submit" style={{display: "none"}} />
                   <input type="text" placeholder = "Search A Photo Here..."onChange={(e) => setSearch(e.target.value)} value={search} style={{ padding: '10px'}}></input>
                 </form>
-                <div style={{padding:'8px',cursor:'pointer',backgroundColor:'rgb(0, 255, 51)',display:'flex',justifyContent:'center'}} onClick={(e)=>handleSubmit(e)}>
-                  <FaSearch />
+
+                <div style={{padding:'8px',cursor:'pointer',backgroundColor: 'rgb(0, 255, 51)',display:'flex',justifyContent:'center'}} onClick={(e)=>handleSubmit(e)}>
+                  <IconContext.Provider value={{color:"black"}}>
+                    <FaSearch />
+                  </IconContext.Provider>
                 </div>
             </div>
 

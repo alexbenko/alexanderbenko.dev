@@ -1,5 +1,6 @@
 import React from "react";
 import { NextSeo } from 'next-seo';
+
 import '../public/index.css'
 
 export default function MyApp({ Component, pageProps }) {
