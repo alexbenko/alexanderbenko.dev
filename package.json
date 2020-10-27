@@ -8,8 +8,8 @@
     "build": "next build",
     "start": "next start -p $PORT",
     "test": "jest",
-    "deploy":"git yeet && gh pr create",
-    "merge":"gh pr merge"
+    "deploy": "git yeet && gh pr create",
+    "merge": "gh pr merge"
   },
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
     "jimp": "^0.16.1",
     "lqip-loader": "^2.2.1",
     "morgan": "^1.10.0",
-    "next": "^9.5.5",
+    "next": "^10.0.0",
     "next-compose-plugins": "^2.2.0",
     "next-optimized-images": "^2.6.2",
     "next-seo": "^4.7.3",
