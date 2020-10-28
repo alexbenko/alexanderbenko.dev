@@ -55,7 +55,8 @@
     "webp-loader": "^0.6.0",
     "webpack-cli": "^3.3.12"
   },
-  "devDependencies": {
-    "sharp": "^0.26.2"
-  }
+  "devDependencies": {},
+  "cacheDirectories": [
+    ".next/cache"
+  ]
 }
