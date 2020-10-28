@@ -1,7 +1,8 @@
-const webpack = require('webpack')
-const withPlugins = require('next-compose-plugins');
-const optimizedImages = require('next-optimized-images');
+const withOptimizedImages = require('next-optimized-images');
 
-module.exports = withPlugins([
-        optimizedImages
-    ]);
+module.exports = withOptimizedImages({
+  responsive: {
+    adapter: require('responsive-loader/sharp')
+  }
+
+});
