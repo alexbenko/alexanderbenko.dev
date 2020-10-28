@@ -44,15 +44,18 @@
     "next": "^10.0.0",
     "next-compose-plugins": "^2.2.0",
     "next-optimized-images": "^2.6.2",
-    "next-seo": "^4.7.3",
+    "next-seo": "^4.14.0",
     "path": "^0.12.7",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-icons": "^3.11.0",
     "react-spring": "^8.0.27",
-    "responsive-loader": "^2.1.1",
+    "responsive-loader": "^2.2.0",
     "svg-sprite-loader": "^5.0.0",
     "webp-loader": "^0.6.0",
     "webpack-cli": "^3.3.12"
+  },
+  "devDependencies": {
+    "sharp": "^0.26.2"
   }
 }
