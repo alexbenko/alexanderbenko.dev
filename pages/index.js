@@ -68,7 +68,7 @@ const Index = ({noTest = true})=>{
   };
 
   return(
-    <div className="home" style={{zIndex:'1',overflow:'scroll'}}>
+    <div className="home" style={{zIndex:'1'}}>
         <Head>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <meta name="og:keywords" content="Software,Eningeer,Software Engineer,Full Stack Software Engineer, hiring, looking,looking to hire,react,javascript,node,nodejs"/>
@@ -77,11 +77,11 @@ const Index = ({noTest = true})=>{
           <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"/>
         </Head>
 
-        {noTest ? <Image file={'me.jpg'} name={"welcome-image"}/> : <img src={`../images/me.jpg`}></img>}
+        {noTest ? <Image file={'me.jpg'} name="welcome-image"/> : <img src={`../images/me.jpg`}></img>}
 
         <br/>
 
-        <div className="welcome_content" style={{overflow:'scroll',textAlign:'center',width:'50%',margin:'0 auto',fontSize:'22px',lineHeight:'26px'}}>
+        <div className="welcome_content" style={{textAlign:'center',width:'50%',margin:'0 auto',fontSize:'22px',lineHeight:'26px'}}>
           {trail.map(({ x, height, ...rest }, index) => (
             <animated.div
               key={welcomeMessage[index]}

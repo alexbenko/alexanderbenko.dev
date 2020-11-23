@@ -4,7 +4,7 @@
   "description": "Portfolio site for Alexander Benko",
   "main": "server.js",
   "scripts": {
-    "dev": "next",
+    "dev": "next -p 420",
     "build": "next build",
     "start": "next start -p $PORT",
     "test": "jest",
