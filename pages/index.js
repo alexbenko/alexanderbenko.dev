@@ -68,7 +68,7 @@ const Index = ({noTest = true})=>{
   };
 
   return(
-    <div className="home" style={{zIndex:'1'}}>
+    <div className="home" style={{zIndex:'1',overflow:"auto"}}>
         <Head>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <meta name="og:keywords" content="Software,Eningeer,Software Engineer,Full Stack Software Engineer, hiring, looking,looking to hire,react,javascript,node,nodejs"/>
