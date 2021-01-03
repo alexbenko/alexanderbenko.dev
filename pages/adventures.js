@@ -224,7 +224,7 @@ const Adventures = ({noTest = true}) =>{
               <span style={{color:'black'}}>List Images {listHovered ? '?' : ''}</span>
             </button>
 
-            {showPopup ? popup() : ''}
+            {showPopup && popup()}
 
           </div>
 
