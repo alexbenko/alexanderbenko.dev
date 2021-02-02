@@ -164,7 +164,7 @@ const Adventures = ({noTest = true}) =>{
     backgroundColor: listHovered ? 'grey' :'rgb(0, 255, 51)',
     border: 'none',
     color: 'white',
-    padding: listHovered ? '14px' : '10px',
+    padding: listHovered ? '12px' : '10px',
     textAlign: 'center',
     textDecoration: 'none',
     fontSize: '16px',
