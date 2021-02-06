@@ -79,7 +79,6 @@ const Index = ({noTest = true})=>{
           <meta name="og:keywords" content="Software,Eningeer,Software Engineer,Full Stack Software Engineer, hiring, looking,looking to hire,react,javascript,node,nodejs"/>
           <meta name="og:description" content="Personal Website For Alexander Benko - Made with Next.js"/>
           <link rel="shortcut icon" href="/home.ico" />
-          <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"/>
         </Head>
 
         {noTest ? <Image file={'me.jpg'} name="welcome-image"/> : <img src={`../images/me.jpg`}></img>}

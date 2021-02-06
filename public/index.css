@@ -1,5 +1,7 @@
 html{
   display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
 }
 * {
   box-sizing: border-box;
@@ -25,7 +27,7 @@ a{
 }
 
 .popup-item:hover{
-  color: yellow;
+  color: white;
 }
 
 .overlay {
@@ -138,3 +140,23 @@ a{
   border-radius:50%;
 }
 
+.text-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  border-radius: 9%;
+  margin:0 auto;
+  color: white !important;
+  border-color: darkgrey !important;
+  background: rgb(35,35,35) !important;
+  background-color: rgb(35,35,35) !important;
+}
+
+.text-card ul{
+
+}
+
+.text-card li{
+  margin: 10px 0;
+}
