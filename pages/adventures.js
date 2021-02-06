@@ -202,18 +202,19 @@ const Adventures = ({noTest = true}) =>{
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="shortcut icon" href="/adventures.ico" />
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"/>
       </Head>
 
-      <div className="current-image-holder" style={{textAlign:'center'}}>
+      <div className="current-image-holder" style={{textAlign:'center',paddingBottom:'20px'}}>
         <h3>My Adventures</h3>
         <h3>Click one of the buttons or type in a name of a file to cycle through images!</h3>
-        <div style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-          <div className="image-file-list" style={style.popopHolder}>
-              <button style={style.listButton}
-              onMouseEnter={()=>setListHovered(!listHovered)}
-              onMouseLeave={()=>setListHovered(!listHovered)}
-              onClick={()=>setShowPopup(!showPopup)}
+        <div className="interaction-holder" style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
+          <div className="image-file-list" >
+              <button
+                className="file-list-button"
+                style={style.listButton}
+                onMouseEnter={()=>setListHovered(!listHovered)}
+                onMouseLeave={()=>setListHovered(!listHovered)}
+                onClick={()=>setShowPopup(!showPopup)}
               >
                 <span style={{color:'black'}}>List Images {listHovered ? '?' : ''}</span>
               </button>
@@ -224,14 +225,16 @@ const Adventures = ({noTest = true}) =>{
 
             <div
               className="search_bar_container"
-              style={{display:'flex',flexDirection:'row',justifyContent:'center',paddingLeft:'19px',paddingTop:'10px'}}
+              style={{display:'flex',flexDirection:'row',justifyContent:'center',paddingLeft:'19px'}}
             >
                   <form onSubmit={(e)=>handleSubmit(e)} className="search-bar">
                     <input type="submit" style={{display: "none"}} />
                     <input type="text" placeholder = "Search A Photo Here..."onChange={(e) => setSearch(e.target.value)} value={search} style={{  padding: '10px'}}></input>
                   </form>
 
-                  <div style={{padding:'8px',cursor:'pointer',backgroundColor: 'rgb(0, 255, 51)',display:'flex',justifyContent:'center'}} onClick={(e)  =>handleSubmit(e)}>
+                  <div style={{padding:'8px',cursor:'pointer',backgroundColor: 'rgb(0, 255, 51)',display:'flex',justifyContent:'center'}}
+                    onClick={(e)=>handleSubmit(e)}
+                  >
                     <IconContext.Provider value={{color:"black",display:'block',margin:'auto'}}>
                       <FaSearch />
                     </IconContext.Provider>
@@ -255,13 +258,34 @@ const Adventures = ({noTest = true}) =>{
               <button style={style.button} onClick={()=>nextImg()}>Next</button>
             </div>
 
-
-
           </animated.div>
       </div>
-      <div className="text-container">
 
+      <div className="text-card" >
+        <h3>Info about my images:</h3>
+        <ul>
+          <li>The purpose of this page is to demonstrate my ability to make an interactive website.</li>
+          <li>My goal was to allow the user to interact with all the images, without rendering all of them to the page at once.</li>
+          <li>All of these images are self hosted. Which forced me to come up with creative ways to speed up their load times.</li>
+          <li>Using the lqip image format, I first load a low pixel version of the image and apply a blur filter.</li>
+          <li>Once the image loads, I display the full pixel version and remove the blur.</li>
+        </ul>
       </div>
+
+      <br/>
+
+      <div className="text-card">
+        <h3>Info about the code that powers this page:</h3>
+        <ul>
+            <li>To display the image file names, the server reads the directory that holds all of the images and sends it to my front end.</li>
+            <li>The front end uses some Javascript to make the file names more user friendly and displays it when you click `List Images`.</li>
+            <li>To power the search bar I implemented the
+              <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Levenshtein_distance"> Levenshtein Distance Algorithm.</a>
+            </li>
+            <li>The algorithm measures the difference between two words (strings). When you type in name, the code compares what you typed to all of the file names. If there is a close similarity, it changes the current image to the one that closest matches the search.</li>
+        </ul>
+      </div>
+
     </div>
   )
 }
