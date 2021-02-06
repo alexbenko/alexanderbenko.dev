@@ -59,15 +59,15 @@ const Adventures = ({noTest = true}) =>{
     s1 = s1.toLowerCase();
     s2 = s2.toLowerCase();
 
-    var costs = new Array();
+    let costs = new Array();
     for (var i = 0; i <= s1.length; i++) {
-      var lastValue = i;
+      let lastValue = i;
       for (var j = 0; j <= s2.length; j++) {
         if (i == 0)
           costs[j] = j;
         else {
           if (j > 0) {
-            var newValue = costs[j - 1];
+            let newValue = costs[j - 1];
             if (s1.charAt(i - 1) != s2.charAt(j - 1))
               newValue = Math.min(Math.min(newValue, lastValue),
                 costs[j]) + 1;
@@ -98,7 +98,7 @@ const Adventures = ({noTest = true}) =>{
 
   const getSearchResult = async ()=>{
     if(search.length < 3){
-      return Promise.reject('Please Type at least 3 letters')
+      throw('Please Type at least 3 letters')
     }
     let mostSimilar = gallery[0]
 
@@ -116,9 +116,9 @@ const Adventures = ({noTest = true}) =>{
     })
 
     if(similarity(mostSimilar,search) > .3){
-      return Promise.resolve(mostSimilar)
+      return mostSimilar
     } else {
-      return Promise.reject('Invalid Search, Please Try Again')
+      throw('Invalid Search, Please Try Again')
     }
   };
 
