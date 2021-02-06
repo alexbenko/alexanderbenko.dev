@@ -60,9 +60,9 @@ const Adventures = ({noTest = true}) =>{
     s2 = s2.toLowerCase();
 
     let costs = new Array();
-    for (var i = 0; i <= s1.length; i++) {
+    for (let i = 0; i <= s1.length; i++) {
       let lastValue = i;
-      for (var j = 0; j <= s2.length; j++) {
+      for (let j = 0; j <= s2.length; j++) {
         if (i == 0)
           costs[j] = j;
         else {
