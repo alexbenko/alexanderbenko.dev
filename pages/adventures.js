@@ -170,8 +170,7 @@ const Adventures = ({noTest = true}) =>{
     fontSize: '16px',
     margin: '0 5px',
     cursor: 'pointer',
-    borderRadius:'15%',
-    marginRight:'20em'
+    borderRadius:'15%'
   };
 
   style.button = {
@@ -198,11 +197,6 @@ const Adventures = ({noTest = true}) =>{
 
   }
 
-  style.popopHolder = {
-    position: 'relative',
-    display: 'inline-block'
-  }
-
   return(
     <div className="adventures" style={{paddingBottom:'25%'}} >
       <Head>
@@ -214,20 +208,36 @@ const Adventures = ({noTest = true}) =>{
       <div className="current-image-holder" style={{textAlign:'center'}}>
         <h3>My Adventures</h3>
         <h3>Click one of the buttons or type in a name of a file to cycle through images!</h3>
+        <div style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
+          <div className="image-file-list" style={style.popopHolder}>
+              <button style={style.listButton}
+              onMouseEnter={()=>setListHovered(!listHovered)}
+              onMouseLeave={()=>setListHovered(!listHovered)}
+              onClick={()=>setShowPopup(!showPopup)}
+              >
+                <span style={{color:'black'}}>List Images {listHovered ? '?' : ''}</span>
+              </button>
 
-        <div className="image-file-list" style={style.popopHolder}>
-            <button style={style.listButton}
-            onMouseEnter={()=>setListHovered(!listHovered)}
-            onMouseLeave={()=>setListHovered(!listHovered)}
-            onClick={()=>setShowPopup(!showPopup)}
+              {showPopup && popup()}
+
+            </div>
+
+            <div
+              className="search_bar_container"
+              style={{display:'flex',flexDirection:'row',justifyContent:'center',paddingLeft:'19px',paddingTop:'10px'}}
             >
-              <span style={{color:'black'}}>List Images {listHovered ? '?' : ''}</span>
-            </button>
+                  <form onSubmit={(e)=>handleSubmit(e)} className="search-bar">
+                    <input type="submit" style={{display: "none"}} />
+                    <input type="text" placeholder = "Search A Photo Here..."onChange={(e) => setSearch(e.target.value)} value={search} style={{  padding: '10px'}}></input>
+                  </form>
 
-            {showPopup && popup()}
-
-          </div>
-
+                  <div style={{padding:'8px',cursor:'pointer',backgroundColor: 'rgb(0, 255, 51)',display:'flex',justifyContent:'center'}} onClick={(e)  =>handleSubmit(e)}>
+                    <IconContext.Provider value={{color:"black",display:'block',margin:'auto'}}>
+                      <FaSearch />
+                    </IconContext.Provider>
+                  </div>
+              </div>
+            </div>
           <animated.div style={props} >
             <div className="current-image">
 
@@ -245,20 +255,12 @@ const Adventures = ({noTest = true}) =>{
               <button style={style.button} onClick={()=>nextImg()}>Next</button>
             </div>
 
-            <div className="search_bar_container" style={{display:'flex',flexDirection:'row',justifyContent:'center',paddingLeft:'19px',paddingTop:'10px'}}>
-                <form onSubmit={(e)=>handleSubmit(e)} className="search-bar">
-                  <input type="submit" style={{display: "none"}} />
-                  <input type="text" placeholder = "Search A Photo Here..."onChange={(e) => setSearch(e.target.value)} value={search} style={{ padding: '10px'}}></input>
-                </form>
 
-                <div style={{padding:'8px',cursor:'pointer',backgroundColor: 'rgb(0, 255, 51)',display:'flex',justifyContent:'center'}} onClick={(e)=>handleSubmit(e)}>
-                  <IconContext.Provider value={{color:"black"}}>
-                    <FaSearch />
-                  </IconContext.Provider>
-                </div>
-            </div>
 
           </animated.div>
+      </div>
+      <div className="text-container">
+
       </div>
     </div>
   )
