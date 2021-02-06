@@ -13,7 +13,7 @@ import { FaSearch } from "react-icons/fa";
 const Adventures = ({noTest = true}) =>{
   //state tracking
   const [gallery, setGallery] = useState([]);
-  const [current,setCurrent]  = useState('agate.jpg');
+  const [current,setCurrent]  = useState('acadia.jpeg');
   const [search,setSearch]    = useState('');
   const [listHovered,setListHovered] = useState(false);
   const [showPopup,setShowPopup] = useState(false);
@@ -277,7 +277,7 @@ const Adventures = ({noTest = true}) =>{
       <div className="text-card">
         <h3>Info about the code that powers this page:</h3>
         <ul>
-            <li>To display the image file names, the server reads the directory that holds all of the images and sends it to my front end.</li>
+            <li>To display the image file names, the server reads the directory that holds all of the images and sends the name of each file to the front end.</li>
             <li>The front end uses some Javascript to make the file names more user friendly and displays it when you click `List Images`.</li>
             <li>To power the search bar I implemented the
               <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Levenshtein_distance"> Levenshtein Distance Algorithm.</a>
