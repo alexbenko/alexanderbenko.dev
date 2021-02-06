@@ -10,7 +10,7 @@ const AllSKills = ({ allSkills }) =>{
       <animated.p style={p}>Click On a icon If you don't recognize it</animated.p>
       {allSkills.map((skillData,i) =>{
         return(
-          <div className="skills-holder" style={{}}>
+          <div className="skills-holder" key={i}>
             {skillData[0].category !== undefined ? <h3>{skillData[0].category}</h3> : ''}
             <animated.div
               key={i}
