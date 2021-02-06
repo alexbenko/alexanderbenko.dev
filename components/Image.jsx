@@ -15,7 +15,7 @@ const Image = ({ file, name}) =>{
       <div className={`${name}-container`} style={{textAlign:'center',padding:'15px'}}>
         {loading ?
           <img className={`${name}-blur`} src={require(`../images/${file}?lqip`)} alt={`${file.split('.'[0])}`}/> :
-          <img className={`${name}`} src={require(`../images/${file}?webp?resize&size=400`)} alt={`${file.split('.'[0])}`}/>
+          <img className={`${name}`} src={require(`../images/${file}?webp?resize&size=800`)} alt={`${file.split('.'[0])}`}/>
         }
       </div>
     );
