@@ -10,7 +10,7 @@ import Head from "next/head";
 import { useSpring,animated,useTrail } from "react-spring";
 //icons
 import { IconContext } from "react-icons";
-import { FaReact, FaHtml5, FaCss3Alt, FaNodeJs, FaDocker, FaGitAlt, FaGithub, FaNpm } from "react-icons/fa";
+import { FaReact, FaHtml5, FaCss3Alt, FaNodeJs, FaDocker, FaGitAlt, FaGithub, FaNpm, FaLinux, FaUbuntu } from "react-icons/fa";
 import { SiFlask, SiPostgresql, SiMysql, SiMongodb, SiJavascript, SiPython, SiNextDotJs, SiNginx, SiGraphql, SiGo, SiDeno } from "react-icons/si";
 
 
@@ -27,7 +27,10 @@ const Index = ({noTest = true})=>{
   ];
 
   const frontEnd = [{category:'FrontEnd',title:'React',Comp:<FaReact />},{title:'Html5',Comp: <FaHtml5 />}, {title:'Css3',Comp:<FaCss3Alt />}];
-  const backEnd = [{category:'Backend',title:'Nodejs',Comp:<FaNodeJs />}, {title:'Flask',Comp:<SiFlask />},{title:'Deno',Comp:<SiDeno/>}];
+  const backEnd = [
+    {category:'Backend',title:'Nodejs',Comp:<FaNodeJs />}, {title:'Flask',Comp:<SiFlask />},{title:'Deno',Comp:<SiDeno/>},
+    {title:'Go',Comp:<SiGo />}
+  ];
 
   const databases = [
     {category:'Databases',title:'PostgreSQL', Comp: <SiPostgresql />},
@@ -35,7 +38,9 @@ const Index = ({noTest = true})=>{
   ];
 
   const misc = [
-    {category:'Misc.',title:'Docker', Comp: <FaDocker />}, {title:'Nextjs',Comp: <SiNextDotJs />}, {title:'Git', Comp:<FaGitAlt/>}, {title:'Nginx', Comp: <SiNginx />}, {title:'GraphQl', Comp:<SiGraphql />}
+    {category:'Misc.',title:'Docker', Comp: <FaDocker />}, {title:'Nextjs',Comp: <SiNextDotJs />}, {title:'Git', Comp:<FaGitAlt/>},
+    {title:'Nginx', Comp: <SiNginx />}, {title:'GraphQl', Comp:<SiGraphql />}, {title: 'Linux', Comp: <FaLinux />},
+    {title: 'Ubuntu', Comp: <FaUbuntu/>}
   ];
 
   //turn the recently declared arrays into an array of arrays. Yo Dawg I heard you like arrays...
@@ -94,14 +99,14 @@ const Index = ({noTest = true})=>{
 
         <div className="top_skills" style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
           <h1 style={{textAlign:'center'}}>{top[0].category}</h1>
-          <div style={{display:'flex',flexDirection:'row',textAlign:'center'}}>
+          <div style={{display:'flex',flexDirection:'row',textAlign:'center',justifyContent:'space-evenly'}}>
             {top.map((skill,i)=> <Skill key={i} title={skill.title} Comp={skill.Comp}/>)}
           </div>
         </div>
 
         <div className="full_list_of_skills" style={{textAlign:'center'}}>
           <button onClick={()=>setShow(!show)} style={style.button}>{show ? 'Close' : 'Full List'}</button>
-          {show ? <AllSkills allSkills={allSkills}/> : ''}
+          {show && <AllSkills allSkills={allSkills}/> }
         </div>
 
 
