@@ -7,12 +7,7 @@ export default function MyApp({ Component, pageProps }) {
   const Layout = Component.Layout ? Component.Layout : React.Fragment;
 
   return (
-    <SnackbarProvider
-    anchorOrigin={{
-        vertical: 'bottom',
-        horizontal: 'right',
-    }}
-    >
+    <SnackbarProvider>
       <Layout>
         <NextSeo
         title="Alexander Benko"
