@@ -1,16 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import NavItem from './NavItem';
 import Contact from '../components/Contact.jsx';
+import useWindowSize from '../hooks/useWindowSize';
 import { useRouter } from "next/router";
 import { FaHome, FaGrav, FaDownload, FaGithub, FaLinkedin } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdEmail } from "react-icons/md";
-import { IconContext } from "react-icons"
-import {useSpring, animated, config, useTransition} from 'react-spring'
+import { IconContext } from "react-icons";
+import {useSpring, animated, config, useTransition} from 'react-spring';
+
+import { useSnackbar } from 'notistack';
 
 export default function MyLayout({ children }) {
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const [showPopup,setShowPopup] = useState(false);
+  const [clicks,setClicks]  = useState(0);
+  const windowSize = useWindowSize()
+
+  useEffect(()=>{
+    if(clicks === 1){
+      enqueueSnackbar('Download my resume, Checkout My Linkedin, or see the code for my projects on Github to learn more about me !',{
+          variant: 'info',
+          anchorOrigin: {
+            vertical: windowSize.width > 1025 ? 'bottom' : 'top', //custom hook in use :), logic is if a desktop else
+            horizontal: 'right' ,
+          },
+        }
+      )
+    }
+  },[clicks]);
+
+  const clickedHandler = async (e)=>{
+    e.preventDefault();
+    setShowPopup(!showPopup)
+  };
 
   const contacts = [
     {icon:<FaGithub/>,title:'Github',url:'https://github.com/alexbenko'},
@@ -25,7 +49,6 @@ export default function MyLayout({ children }) {
       opacity: showPopup ? 1 : 0
     }
   });
-
 
   //For some reason when I mapped over the endpoints, they were not visible so I had to hand code them
   return (
@@ -52,7 +75,7 @@ export default function MyLayout({ children }) {
               {contacts.map((item,i)=> <Contact icon={item.icon} title={item.title} key={i} url={item.url}/>)}
             </div>
         </div>
-        <span style={{fontSize:'30px',cursor:'pointer'}} onClick={()=>setShowPopup(!showPopup)}>&#9776;</span>
+        <span style={{fontSize:'30px',cursor:'pointer'}} onClick={(e)=>{setClicks(clicks + 1); clickedHandler(e);}}>&#9776;</span>
       {children}
     </>
   )
