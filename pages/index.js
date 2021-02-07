@@ -13,22 +13,36 @@ import { IconContext } from "react-icons";
 import { FaReact, FaHtml5, FaCss3Alt, FaNodeJs, FaDocker, FaGitAlt, FaGithub, FaNpm, FaLinux, FaUbuntu } from "react-icons/fa";
 import { SiFlask, SiPostgresql, SiMysql, SiMongodb, SiJavascript, SiPython, SiNextDotJs, SiNginx, SiGraphql, SiGo, SiDeno } from "react-icons/si";
 
-
+import { useSnackbar } from 'notistack';
 const Index = ({noTest = true})=>{
   const [show,setShow] = useState(false);
-  const welcomeMessage = ['Hello ! My Name is Alexander Benko...','I am a Full Stack Software Engineer...','And I learned how to code in a National Park...'];
+  const welcomeMessage = [
+    'Hello ! My Name is Alexander Benko...',
+    'I am a Full Stack Software Engineer...',
+    'And I learned how to code in a National Park...'
+  ];
 
   //arrays to store the name of and the icon for every software skill I am proficient in
-  const top = [{category:'Top Skills',title:'React',Comp: <FaReact />}, {title:'Nodejs',Comp:<FaNodeJs />},{title:'PostgreSQL', Comp: <SiPostgresql />}];
+  const top = [
+    {category:'Top Skills',title:'React',Comp: <FaReact />},
+    {title:'Nodejs',Comp:<FaNodeJs />},
+    {title:'PostgreSQL', Comp: <SiPostgresql />}
+  ];
   const languages = [
     {category:'Languages',title:'Javscript',Comp: <SiJavascript />},
     {title:'Go',Comp:<SiGo />},
     {title:'Python',Comp: <SiPython />}
   ];
 
-  const frontEnd = [{category:'FrontEnd',title:'React',Comp:<FaReact />},{title:'Html5',Comp: <FaHtml5 />}, {title:'Css3',Comp:<FaCss3Alt />}];
+  const frontEnd = [
+    {category:'FrontEnd',title:'React',Comp:<FaReact />},
+    {title:'Html5',Comp: <FaHtml5 />},
+    {title:'Css3',Comp:<FaCss3Alt />}
+  ];
   const backEnd = [
-    {category:'Backend',title:'Nodejs',Comp:<FaNodeJs />}, {title:'Flask',Comp:<SiFlask />},{title:'Deno',Comp:<SiDeno/>},
+    {category:'Backend',title:'Nodejs',Comp:<FaNodeJs />},
+    {title:'Flask',Comp:<SiFlask />},
+    {title:'Deno',Comp:<SiDeno/>},
     {title:'Go',Comp:<SiGo />}
   ];
 
