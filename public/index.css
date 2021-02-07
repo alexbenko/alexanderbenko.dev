@@ -83,6 +83,10 @@ a{
   right: 35px;
   }
 
+  .text-card{
+    width: 70%;
+  }
+
 
 }
 
@@ -121,6 +125,10 @@ a{
     width: 360px;
   }
 
+  .text-card{
+    width: 70% !important;
+  }
+
 }
 
 .welcome-image-blur{
@@ -144,17 +152,13 @@ a{
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 70%;
+  width: 50%;
   border-radius: 9%;
   margin:0 auto;
   color: white !important;
   border-color: darkgrey !important;
   background: rgb(35,35,35) !important;
   background-color: rgb(35,35,35) !important;
-}
-
-.text-card ul{
-
 }
 
 .text-card li{

@@ -262,7 +262,7 @@ const Adventures = ({noTest = true}) =>{
       </div>
 
       <div className="text-card" >
-        <h3>Info about my images:</h3>
+        <h3 style={{textAlign:'center'}}>Info about my images:</h3>
         <ul>
           <li>The purpose of this page is to demonstrate my ability to make an interactive website.</li>
           <li>My goal was to allow the user to interact with all the images, without rendering all of them to the page at once.</li>
@@ -275,7 +275,7 @@ const Adventures = ({noTest = true}) =>{
       <br/>
 
       <div className="text-card">
-        <h3>Info about the code that powers this page:</h3>
+        <h3 style={{textAlign:'center'}}>Info about the code that powers this page:</h3>
         <ul>
             <li>To display the image file names, the server reads the directory that holds all of the images and sends the name of each file to the front end.</li>
             <li>The front end uses some Javascript to make the file names more user friendly and displays it when you click `List Images`.</li>
