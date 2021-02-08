@@ -53,7 +53,7 @@ const Index = ({noTest = true})=>{
 
   const misc = [
     {category:'Misc.',title:'Docker', Comp: <FaDocker />}, {title:'Nextjs',Comp: <SiNextDotJs />}, {title:'Git', Comp:<FaGitAlt/>},
-    {title:'Nginx', Comp: <SiNginx />}, {title:'GraphQl', Comp:<SiGraphql />}, {title: 'Linux', Comp: <FaLinux />},
+    {title:'Nginx', Comp: <SiNginx />}, {title: 'Linux', Comp: <FaLinux />},
     {title: 'Ubuntu', Comp: <FaUbuntu/>}
   ];
 
