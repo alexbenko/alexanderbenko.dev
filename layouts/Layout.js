@@ -9,7 +9,6 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { MdEmail } from "react-icons/md";
 import { IconContext } from "react-icons";
 import {useSpring, animated, config, useTransition} from 'react-spring';
-
 import { useSnackbar } from 'notistack';
 
 export default function MyLayout({ children }) {
@@ -53,7 +52,7 @@ export default function MyLayout({ children }) {
   //For some reason when I mapped over the endpoints, they were not visible so I had to hand code them
   return (
     <>
-        <div className="overlay" style={{width: showPopup ? '100%' : '0%'}}>
+        <div className="overlay" style={{width: showPopup ? '100%' : '0%'}} onClick={() => closeSnackbar()}>
           <a className="closebtn" onClick={()=>setShowPopup(!showPopup)}>&times;</a>
           <div className="overlay-content">
             <Link href={'/'} >
@@ -66,6 +65,7 @@ export default function MyLayout({ children }) {
           </div>
 
           <div className="contact-info" style={{display:'flex',flexDirection:'row',position:'absolute',bottom:'0',textAlign:'center'}}>
+
               <div className="resume-container" style={{display:'flex',flexDirection:'row',justifyContent:'space-around'}}>
                   <a href="/benko-resume.pdf" download style={{textDecoration:'none',color:'rgb(0, 255, 51)',fontSize:'22px'}}>
                     <FaDownload />
@@ -73,7 +73,7 @@ export default function MyLayout({ children }) {
                   </a>
               </div>
               {contacts.map((item,i)=> <Contact icon={item.icon} title={item.title} key={i} url={item.url}/>)}
-            </div>
+         </div>
         </div>
         <span style={{fontSize:'30px',cursor:'pointer'}} onClick={(e)=>{setClicks(clicks + 1); clickedHandler(e);}}>&#9776;</span>
       {children}
