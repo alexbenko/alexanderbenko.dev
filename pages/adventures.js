@@ -261,30 +261,7 @@ const Adventures = ({noTest = true}) =>{
           </animated.div>
       </div>
 
-      <div className="text-card" >
-        <h3 style={{textAlign:'center'}}>Info about my images:</h3>
-        <ul>
-          <li>The purpose of this page is to demonstrate my ability to make an interactive website.</li>
-          <li>My goal was to allow the user to interact with all the images, without rendering all of them to the page at once.</li>
-          <li>All of these images are self hosted. Which forced me to come up with creative ways to speed up their load times.</li>
-          <li>Using the lqip image format, I first load a low pixel version of the image and apply a blur filter.</li>
-          <li>Once the image loads, I display the full pixel version and remove the blur.</li>
-        </ul>
-      </div>
 
-      <br/>
-
-      <div className="text-card">
-        <h3 style={{textAlign:'center'}}>Info about the code that powers this page:</h3>
-        <ul>
-            <li>To display the image file names, the server reads the directory that holds all of the images and sends the name of each file to the front end.</li>
-            <li>The front end uses some Javascript to make the file names more user friendly and displays it when you click `List Images`.</li>
-            <li>To power the search bar I implemented the
-              <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Levenshtein_distance"> Levenshtein Distance Algorithm.</a>
-            </li>
-            <li>The algorithm measures the difference between two words (strings). When you type in name, the code compares what you typed to all of the file names. If there is a close similarity, it changes the current image to the one that closest matches the search.</li>
-        </ul>
-      </div>
 
     </div>
   )
