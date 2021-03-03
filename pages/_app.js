@@ -1,13 +1,11 @@
 import React from "react";
 import { NextSeo } from 'next-seo';
-import { SnackbarProvider } from 'notistack';
 import '../public/index.css'
 
 export default function MyApp({ Component, pageProps }) {
   const Layout = Component.Layout ? Component.Layout : React.Fragment;
 
   return (
-    <SnackbarProvider>
       <Layout>
         <NextSeo
         title="Alexander Benko"
@@ -28,10 +26,7 @@ export default function MyApp({ Component, pageProps }) {
             site_name: "Alexander Benko",
           }}
         />
-
           <Component {...pageProps} />
-
       </Layout>
-    </SnackbarProvider>
   )
 }

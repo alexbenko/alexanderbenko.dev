@@ -9,26 +9,9 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { MdEmail } from "react-icons/md";
 import { IconContext } from "react-icons";
 import {useSpring, animated, config, useTransition} from 'react-spring';
-import { useSnackbar } from 'notistack';
 
 export default function MyLayout({ children }) {
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const [showPopup,setShowPopup] = useState(false);
-  const [clicks,setClicks]  = useState(0);
-  const windowSize = useWindowSize()
-
-  useEffect(()=>{
-    if(clicks === 1){
-      enqueueSnackbar('Download my resume, Checkout My Linkedin, or see the code for my projects on Github to learn more about me !',{
-          variant: 'info',
-          anchorOrigin: {
-            vertical: windowSize.width > 1025 ? 'bottom' : 'top', //custom hook in use :), logic is if a desktop else
-            horizontal: 'right' ,
-          },
-        }
-      )
-    }
-  },[clicks]);
 
   const clickedHandler = async (e)=>{
     e.preventDefault();
@@ -52,8 +35,8 @@ export default function MyLayout({ children }) {
   //For some reason when I mapped over the endpoints, they were not visible so I had to hand code them
   return (
     <>
-        <div className="overlay" style={{width: showPopup ? '100%' : '0%'}} onClick={() => closeSnackbar()}>
-          <a className="closebtn" onClick={()=>setShowPopup(!showPopup)}>&times;</a>
+        <div className="overlay" style={{width: showPopup ? '100%' : '0%'}}>
+          <a className="closebtn" style={{cursor:'pointer'}} onClick={()=>setShowPopup(false)}>&times;</a>
           <div className="overlay-content">
             <Link href={'/'} >
               <a style={{cursor:'pointer'}} onClick={()=>setShowPopup(false)}>{'Home'}</a>
@@ -75,7 +58,7 @@ export default function MyLayout({ children }) {
               {contacts.map((item,i)=> <Contact icon={item.icon} title={item.title} key={i} url={item.url}/>)}
          </div>
         </div>
-        <span style={{fontSize:'30px',cursor:'pointer'}} onClick={(e)=>{setClicks(clicks + 1); clickedHandler(e);}}>&#9776;</span>
+        <span style={{fontSize:'30px',cursor:'pointer',position:'fixed'}} onClick={(e)=>clickedHandler(e)}>&#9776;</span>
       {children}
     </>
   )
