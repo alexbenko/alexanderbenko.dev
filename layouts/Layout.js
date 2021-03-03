@@ -48,7 +48,6 @@ export default function MyLayout({ children }) {
           </div>
 
           <div className="contact-info" style={{display:'flex',flexDirection:'row',position:'absolute',bottom:'0',textAlign:'center'}}>
-
               <div className="resume-container" style={{display:'flex',flexDirection:'row',justifyContent:'space-around'}}>
                   <a href="/benko-resume.pdf" download style={{textDecoration:'none',color:'rgb(0, 255, 51)',fontSize:'22px'}}>
                     <FaDownload />
@@ -58,7 +57,12 @@ export default function MyLayout({ children }) {
               {contacts.map((item,i)=> <Contact icon={item.icon} title={item.title} key={i} url={item.url}/>)}
          </div>
         </div>
-        <span style={{fontSize:'30px',cursor:'pointer',position:'fixed'}} onClick={(e)=>clickedHandler(e)}>&#9776;</span>
+        <div
+          className="hamburger-icon"
+          style={{fontSize:'30px',cursor:'pointer',position:'fixed'}}
+          onClick={(e)=>clickedHandler(e)}>
+            &#9776;
+        </div>
       {children}
     </>
   )
