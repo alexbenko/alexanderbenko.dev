@@ -225,17 +225,17 @@ const Adventures = ({noTest = true}) =>{
 
             <div
               className="search_bar_container"
-              style={{display:'flex',flexDirection:'row',justifyContent:'center',paddingLeft:'19px'}}
+              style={{display:'flex',flexDirection:'row',justifyContent:'center'}}
             >
                   <form onSubmit={(e)=>handleSubmit(e)} className="search-bar">
                     <input type="submit" style={{display: "none"}} />
                     <input type="text" placeholder = "Search A Photo Here..."onChange={(e) => setSearch(e.target.value)} value={search} style={{  padding: '10px'}}></input>
                   </form>
 
-                  <div style={{padding:'8px',cursor:'pointer',backgroundColor: 'rgb(0, 255, 51)',display:'flex',justifyContent:'center'}}
+                  <div style={{padding:'8px',cursor:'pointer',backgroundColor: 'rgb(0, 255, 51)',padding:'10px'}}
                     onClick={(e)=>handleSubmit(e)}
                   >
-                    <IconContext.Provider value={{color:"black",display:'block',margin:'auto'}}>
+                    <IconContext.Provider value={{color:"black"}}>
                       <FaSearch />
                     </IconContext.Provider>
                   </div>
