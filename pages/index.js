@@ -99,13 +99,13 @@ const Index = ({noTest = true})=>{
 
         <br/>
 
-        <div className="welcome_content" style={{textAlign:'center',width:'50%',margin:'0 auto',fontSize:'22px',lineHeight:'26px'}}>
+        <div className="welcome_content" style={{display:'flex',flexDirection:'column',flexWrap:'wrap',alignItems:'center',justifyContent:'center',fontSize:'22px',lineHeight:'26px'}}>
           {trail.map(({ x, height, ...rest }, index) => (
             <animated.div
               key={welcomeMessage[index]}
               className="trails_text"
-              style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`),padding:'5px' }}>
-              <animated.p style={{ height }}>{welcomeMessage[index]}</animated.p>
+              style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`)}}>
+              <animated.p style={{ height ,textAlign:'center'}}>{welcomeMessage[index]}</animated.p>
             </animated.div>
           ))}
         </div>

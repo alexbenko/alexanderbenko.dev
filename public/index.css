@@ -150,6 +150,7 @@ a{
   filter: blur(15px);
   object-fit: cover;
   border-radius:50%;
+  max-width: 100%;
 }
 
 .welcome-image{
@@ -158,4 +159,5 @@ a{
   height: 320px;
   object-fit: cover;
   border-radius:50%;
+  max-width: 100%;
 }
