@@ -104,7 +104,7 @@ const Index = ({noTest = true})=>{
             <animated.div
               key={welcomeMessage[index]}
               className="trails_text"
-              style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`) }}>
+              style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`),padding:'5px' }}>
               <animated.p style={{ height }}>{welcomeMessage[index]}</animated.p>
             </animated.div>
           ))}
