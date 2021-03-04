@@ -23,6 +23,7 @@ const AllSKills = ({ allSkills }) =>{
                 from: {
                   display:'flex',
                   flexDirection:'row',
+                  flexWrap:'wrap',
                   opacity: 0,
                   transform: 'translateX(-250px)'
                 }
