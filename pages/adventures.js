@@ -242,8 +242,7 @@ const Adventures = ({noTest = true}) =>{
               </div>
             </div>
           <animated.div style={props} >
-            <div className="current-image">
-
+            <div className="current-image" style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
               {noTest ?
                 <Image file={`adventures/${current}`} name={"current"}/> :
                 <img className="current" src={`../images/adventures/${current}`}></img>
