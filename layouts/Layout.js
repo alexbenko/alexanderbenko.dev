@@ -47,7 +47,7 @@ export default function MyLayout({ children }) {
             </Link>
           </div>
 
-          <div className="contact-info" style={{display:'flex',flexDirection:'row',position:'absolute',bottom:'0',textAlign:'center'}}>
+          <div className="contact-info" style={{display:'flex',flexDirection:'row',position:'absolute',bottom:'0',textAlign:'center',flexWrap:'wrap'}}>
               <div className="resume-container" style={{display:'flex',flexDirection:'row',justifyContent:'space-around'}}>
                   <a href="/benko-resume.pdf" download style={{textDecoration:'none',color:'rgb(0, 255, 51)',fontSize:'22px'}}>
                     <FaDownload />
