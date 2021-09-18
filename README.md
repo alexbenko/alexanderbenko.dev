@@ -2,7 +2,7 @@
 
 <h2>Welcome To the code base for my OLD portfolio site.</h2>
 
-<p>So I completely remade it. The updated tech stack is : Next.js and React Spring for the more advanced animations/transisitons.</p>
+<p>Thetech stack is : Next.js and React Spring for the more advanced animations/transisitons.</p>
 <p>All Styling is vanilla css or applied using javascript/react in line styling.</p>
 
 Current Speed Test:
