@@ -1,13 +1,6 @@
 # alexanderbenko.dev
 
-<h2>Welcome To the code base for my portfolio site.</h2>
-
-<p>For those who don't know this is the second version of my portfolio site. I ran into a couple of issues with my old one and decided to remake it and they were... </p>
-
-<ol>
-  <li>The database host I was using shut down it's free plan so I had to come up with a different way to get a bunch of images without hard coding it into the front end.</li>
-  <li>I did not feel like it acurately portrayed my skills.</li>
-</ol>
+<h2>Welcome To the code base for my OLD portfolio site.</h2>
 
 <p>So I completely remade it. The updated tech stack is : Next.js and React Spring for the more advanced animations/transisitons.</p>
 <p>All Styling is vanilla css or applied using javascript/react in line styling.</p>
